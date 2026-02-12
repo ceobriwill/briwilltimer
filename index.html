@@ -240,6 +240,9 @@
 
       .email-signup input::placeholder {
         color: #999;
+        text-align: center;
+        font-style: italic;
+        font-size: 0.80rem;
       }
 
       .email-signup button {
@@ -410,21 +413,21 @@
           <div class="label">Secs</div>
         </div>
       </div>
-      <!-- <form name="contact" netlify>
-        <div class="email-signup">
-          <p>
-            <label>Name <input type="text" name="name" /></label>
-          </p>
-          <p>
-            <label>Email <input type="email" name="email" /></label>
-          </p>
-          <p>
-            <button type="submit">Notify me</button>
-          </p>
-        </div>
-      </form> -->
-
       <form name="contact" netlify>
+        <div class="email-signup">
+          <!-- <p> -->
+          <input type="text" name="name" placeholder="Enter your name" />
+          <!-- </p> -->
+          <!-- <p> -->
+           <input type="email" name="email" placeholder="Enter your email address" />
+          <!-- </p> -->
+          <!-- <p> -->
+            <button type="submit">Notify me</button>
+          <!-- </p> -->
+        </div>
+      </form>
+
+      <!-- <form name="contact" netlify>
         <div class="email-signup">
           <input
             type="email"
@@ -434,7 +437,7 @@
           <button type="submit">Notify Me</button>
         </div>
       </form>
-    </div>
+    </div> -->
 
     <script>
       // Set the launch date (Year, Month - 1, Day) -> February is index 1

@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -35,14 +34,12 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="Briwill" />
-    <title>
-      Briwill | Online Shopping for Electronics, Fashion, Home, Beauty & Sport
-    </title>
+    <title>BRIWILL - Coming Soon</title>
     <!--this Tells Google which version of a page is the main one-->
     <link rel="canonical" href="www.briwill.co" />
 
     <!-- <link rel="preload" href="css/styles.css" as="style" /> -->
-    <!-- <link rel="stylesheet" href="css/styles.css" /> -->
+    <link rel="stylesheet" href="index.css" />
     <link rel="icon" type="image/jpg" href="briwillfg.jpeg" />
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
@@ -63,424 +60,167 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     /> -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+  <header>
+    <h1 class="briwilllogo">BRIWILL</h1>
+    <nav>
+      <a href="">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+    <section class="hero-section">
+        <div class="container">
+            <h1>BRIWILL is Coming</h1>
+            <p class="hero-subtext">
+                A next-generation online marketplace built for trusted shopping and seamless delivery.
+            </p>
 
-    <style>
-      :root {
-        --primary-color: #2c3e50;
-        --accent-color: #2563eb;
-        --accent-bright: #3b82f6;
-        --text-light: #ffffff;
-        --success-color: #10b981;
-      }
-
-      * {
-        transition: all 0.3s ease;
-      }
-
-      body {
-        margin: 0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: url("comingsoon.jpg") no-repeat;
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-light);
-        text-align: center;
-        padding: 1rem;
-        box-sizing: border-box;
-      }
-
-      .container {
-        padding: 2rem;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(12px);
-        border-radius: 20px;
-        max-width: 800px;
-        width: 100%;
-        box-sizing: border-box;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow:
-          0 20px 60px rgba(0, 0, 0, 0.4),
-          inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        animation: slideIn 0.6s ease;
-      }
-
-      @keyframes slideIn {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-        margin-top: 0;
-        font-weight: 800;
-        background: linear-gradient(135deg, #60a5fa, #34d399);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        letter-spacing: 1px;
-        text-shadow: 0 4px 20px rgba(96, 165, 250, 0.2);
-      }
-
-      p {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-        opacity: 0.95;
-        margin-top: 0;
-        line-height: 1.6;
-        font-weight: 500;
-      }
-
-      /* Timer Styling */
-      #countdown {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 2rem;
-        flex-wrap: wrap;
-      }
-
-      .time-box {
-        background: linear-gradient(135deg, var(--accent-color), #1e40af);
-        padding: 12px 10px;
-        border-radius: 15px;
-        min-width: 70px;
-        flex: 1 1 calc(25% - 10px);
-        min-width: 60px;
-        box-shadow:
-          0 8px 20px rgba(37, 99, 235, 0.3),
-          inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        cursor: pointer;
-        animation: pulse 2s ease-in-out infinite;
-      }
-
-      .time-box:hover {
-        transform: translateY(-5px);
-        box-shadow:
-          0 12px 30px rgba(37, 99, 235, 0.4),
-          inset 0 1px 0 rgba(255, 255, 255, 0.2);
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          box-shadow:
-            0 8px 20px rgba(37, 99, 235, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-        50% {
-          box-shadow:
-            0 8px 30px rgba(37, 99, 235, 0.5),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        }
-      }
-
-      .time-box span {
-        display: block;
-        font-size: 1.8rem;
-        font-weight: 800;
-        letter-spacing: 1px;
-      }
-
-      .label {
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        font-weight: 700;
-        letter-spacing: 2px;
-        opacity: 0.9;
-      }
-
-      /* Call to Action */
-      .email-signup {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .email-signup p {
-        margin: 0;
-      }
-
-      .email-signup label {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        font-size: 0.95rem;
-        letter-spacing: 0.5px;
-      }
-
-      .email-signup input {
-        padding: 12px 16px;
-        border: none;
-        border-radius: 10px;
-        width: 100%;
-        box-sizing: border-box;
-        font-size: 1rem;
-        background: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        outline: none;
-      }
-
-      .email-signup input:focus {
-        box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
-        transform: translateY(-2px);
-      }
-
-      .email-signup input::placeholder {
-        color: #999;
-        text-align: center;
-        font-style: italic;
-        font-size: 0.80rem;
-      }
-
-      .email-signup button {
-        padding: 12px 25px;
-        border: none;
-        background: linear-gradient(
-          135deg,
-          var(--accent-color),
-          var(--success-color)
-        );
-        color: white;
-        cursor: pointer;
-        border-radius: 10px;
-        font-weight: 700;
-        font-size: 1rem;
-        width: 100%;
-        box-sizing: border-box;
-        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-      }
-
-      .email-signup button:hover {
-        background: linear-gradient(135deg, var(--accent-bright), #059669);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 25px rgba(37, 99, 235, 0.4);
-      }
-
-      .email-signup button:active {
-        transform: translateY(0);
-      }
-
-      /* Tablet & Desktop */
-      @media (min-width: 768px) {
-        body {
-          padding: 0;
-        }
-
-        .container {
-          padding: 3rem;
-          border-radius: 25px;
-        }
-
-        h1 {
-          font-size: 3.5rem;
-          letter-spacing: 2px;
-        }
-
-        p {
-          font-size: 1.2rem;
-        }
-
-        #countdown {
-          gap: 20px;
-        }
-
-        .time-box {
-          padding: 15px;
-          min-width: 100px;
-          flex: 0 1 auto;
-          border-radius: 18px;
-        }
-
-        .time-box span {
-          font-size: 2.5rem;
-        }
-
-        .label {
-          font-size: 0.8rem;
-        }
-
-        .email-signup {
-          flex-direction: column;
-          gap: 1.5rem;
-          max-width: 550px;
-          margin: 0 auto;
-        }
-
-        .email-signup p {
-          margin: 0;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.5rem;
-        }
-
-        .email-signup label {
-          display: block;
-          width: 100%;
-          text-align: left;
-        }
-
-        .email-signup input {
-          border-radius: 12px;
-          padding: 14px 18px;
-          font-size: 1.05rem;
-        }
-
-        .email-signup button {
-          align-self: flex-start;
-          padding: 14px 45px;
-          border-radius: 12px;
-          font-size: 0.95rem;
-        }
-
-        .email-signup button:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 8px 30px rgba(37, 99, 235, 0.5);
-        }
-      }
-
-      /* Small screens */
-      @media (max-width: 480px) {
-        .container {
-          padding: 1.5rem;
-          border-radius: 18px;
-        }
-
-        h1 {
-          font-size: 1.8rem;
-          letter-spacing: 0.5px;
-        }
-
-        p {
-          font-size: 0.95rem;
-        }
-
-        #countdown {
-          gap: 8px;
-        }
-
-        .time-box {
-          padding: 10px 8px;
-          min-width: 50px;
-          border-radius: 12px;
-        }
-
-        .time-box span {
-          font-size: 1.5rem;
-        }
-
-        .label {
-          font-size: 0.65rem;
-          letter-spacing: 1px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>BRIWILL is Coming</h1>
-
-      <p>
-        A next-generation E-commerece platform built for smarter shopping, trusted sellers and semless delivery
-       </p>
-       <p>
-        Launching on February 17, 2027. Be the first to know
-       </p>
-
-      <div id="countdown">
-        <div class="time-box">
-          <span id="days">00</span>
-          <div class="label">Days</div>
+            <div class="countdown-container" id="countdown">
+                <div class="timer-box">
+                    <span class="timer-number" id="days">368</span>
+                    <span class="timer-label">DAYS</span>
+                </div>
+                <div class="timer-box">
+                    <span class="timer-number" id="hours">23</span>
+                    <span class="timer-label">HOURS</span>
+                </div>
+                <div class="timer-box">
+                    <span class="timer-number" id="minutes">59</span>
+                    <span class="timer-label">MINUTES</span>
+                </div>
+                <div class="timer-box">
+                    <span class="timer-number" id="seconds">17</span>
+                    <span class="timer-label">SECONDS</span>
+                </div>
+            </div>
         </div>
-        <div class="time-box">
-          <span id="hours">00</span>
-          <div class="label">Hours</div>
-        </div>
-        <div class="time-box">
-          <span id="minutes">00</span>
-          <div class="label">Mins</div>
-        </div>
-        <div class="time-box">
-          <span id="seconds">00</span>
-          <div class="label">Secs</div>
-        </div>
-      </div>
-      <form name="contact" netlify>
-        <div class="email-signup">
-          <!-- <p> -->
-          <input type="text" name="name" placeholder="Enter your name" />
-          <!-- </p> -->
-          <!-- <p> -->
-           <input type="email" name="email" placeholder="Enter your email address" />
-          <!-- </p> -->
-          <!-- <p> -->
-            <button type="submit">Notify me</button>
-          <!-- </p> -->
-        </div>
-      </form>
+    </section>
 
-      <!-- <form name="contact" netlify>
-        <div class="email-signup">
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email address"
-          />
-          <button type="submit">Notify Me</button>
+    <section class="form-section">
+        <div class="container">
+            <div class="form-wrapper">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h2>Get Notified at Launch</h2>
+                    <p>Be the first to experience the future of online shopping in Nigeria.</p>
+                </div>
+
+                <form onsubmit="event.preventDefault(); alert('Subscribed!');">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" placeholder="Enter your email address">
+                    </div>
+
+                    <button type="submit" class="btn-submit">Notify Me</button>
+                </form>
+
+                <p class="spam-text">We'll notify you when we launch. No spam.</p>
+            </div>
         </div>
-      </form>
-    </div> -->
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="icon-box">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.748 3.748 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                        </svg>
+                    </div>
+                    <h3>Secure Payments</h3>
+                    <p>Bank-grade encryption for all transactions</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon-box">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon" stroke-width="1.5">
+                            <path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18455 2.99721 7.13631 4.39828 5.49706C5.79935 3.85781 7.69279 2.71537 9.79619 2.24013C11.8996 1.7649 14.1003 1.98232 16.07 2.85999" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 4L12 14.01L9 11.01" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Verified Sellers</h3>
+                    <p>Every merchant is thoroughly vetted</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon-box">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="svg-icon" d="M1 3H15V13H1V3Z" stroke-width="1.5" stroke-linejoin="round"/>
+                            <path class="svg-icon" d="M16 8H20L23 11V13H16V8Z" stroke-width="1.5" stroke-linejoin="round"/>
+                            <circle class="svg-icon" cx="5.5" cy="15.5" r="2.5" stroke-width="1.5"/>
+                            <circle class="svg-icon" cx="18.5" cy="15.5" r="2.5" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <h3>Reliable Delivery</h3>
+                    <p>Track your orders in real-time</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 2rem;">
-          &copy; 2025 Briwill Ltd. All rights reserved.
-        </p>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>BRIWILL LTD</h4>
+                    <p style="margin-bottom: 2px;">Registered Nigerian Company</p>
+                    <p>Building trust in e-commerce</p>
+                </div>
+
+                <div>
+                    <p class="footer-label" id="contact">CONTACT</p>
+                    <div class="footer-links">
+                        <a href="mailto:info@briwill.com">hello@briwill.co</a>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="footer-label">LEGAL</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                © 2025 BRIWILL LTD. All rights reserved.
+            </div>
+        </div>
     </footer>
 
     <script>
-      // Set the launch date (Year, Month - 1, Day) -> February is index 1
-      const launchDate = new Date("February 17, 2027 00:00:00").getTime();
+        // Set launch date
+        const launchDate = new Date();
+        launchDate.setDate(launchDate.getDate() + 368); 
+        launchDate.setHours(launchDate.getHours() + 23);
+        launchDate.setMinutes(launchDate.getMinutes() + 59);
 
-      const timer = setInterval(function () {
-        const now = new Date().getTime();
-        const distance = launchDate - now;
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
 
-        // Time calculations
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-        );
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Output the results
-        document.getElementById("days").innerHTML = days;
-        document.getElementById("hours").innerHTML = hours;
-        document.getElementById("minutes").innerHTML = minutes;
-        document.getElementById("seconds").innerHTML = seconds;
-
-        // If countdown is finished
-        if (distance < 0) {
-          clearInterval(timer);
-          document.querySelector(".container h1").innerHTML = "WE ARE LIVE!";
-          document.getElementById("countdown").style.display = "none";
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
         }
-      }, 1000);
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
-  </body>
+</body>
 </html>

@@ -1,0 +1,321 @@
+/* --- 1. Reset & Global Styles --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f9fafb;
+  color: #1e293b;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 80px;
+}
+
+header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0a3d62; /* Updated Color */
+  padding-left: 20px;
+  padding-top: 10px;
+}
+header nav a {
+  margin-right: 20px;
+  font-size: 14px;
+  color: #64748b;
+  transition: color 0.2s;
+}
+
+/* Responsive Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- 2. Typography --- */
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0a3d62; /* Updated Color */
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0a3d62; /* Updated Color */
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+p {
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: #64748b;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #f59e0b;
+}
+
+/* --- 3. Hero & Countdown Section --- */
+.hero-section {
+  padding: 80px 0 60px 0;
+  text-align: center;
+  background-color: #fff;
+}
+
+.hero-subtext {
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  font-size: 18px;
+}
+
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.timer-box {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  width: 90px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.timer-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0a3d62; /* Updated Color */
+}
+
+.timer-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* --- 4. Form Section --- */
+.form-section {
+  padding: 60px 0;
+  background-color: #f9fafb;
+}
+
+.form-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  color: #334155;
+  transition: all 0.2s;
+}
+
+.form-input:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: #f59e0b;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.3);
+  transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+  background-color: #d97706;
+}
+
+.spam-text {
+  font-size: 14px;
+  color: #94a3b8;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* --- 5. Features Section --- */
+.features-section {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Mobile default: 1 column */
+  gap: 40px;
+  text-align: center;
+}
+
+.feature-item {
+  padding: 20px;
+}
+
+.icon-box {
+  margin-bottom: 16px;
+  color: #0a3d62; /* Updated Color */
+}
+
+/* SVG Stroke Color Update Class */
+.svg-icon {
+  stroke: #0a3d62; /* Updated Color */
+}
+.svg-fill {
+  fill: #0a3d62; /* Updated Color */
+}
+
+/* --- 6. Footer --- */
+footer {
+  background-color: #fff;
+  padding: 60px 0 40px 0;
+  border-top: 1px solid #f1f5f9;
+  margin-top: auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile default */
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 14px;
+  color: #94a3b8;
+  padding-top: 30px;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* --- 7. Media Queries (Responsiveness) --- */
+
+/* Tablet & Up (min-width: 768px) */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 48px;
+  }
+  .hero-subtext {
+    font-size: 20px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for features */
+  }
+
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr; /* Logo/Desc takes more space, then links */
+  }
+}
+
+/* Mobile Adjustments (max-width: 600px) */
+@media (max-width: 600px) {
+  header {
+    height: 60px;
+  }
+  .hero-section {
+    padding: 50px 0;
+  }
+  .form-wrapper {
+    padding: 24px;
+    box-shadow: none;
+    border: 1px solid #e2e8f0;
+  }
+  .timer-box {
+    width: 70px;
+    height: 80px;
+  }
+  .timer-number {
+    font-size: 24px;
+  }
+  .timer-label {
+    font-size: 9px;
+  }
+}

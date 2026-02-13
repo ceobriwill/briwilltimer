@@ -1,0 +1,341 @@
+/* --- 1. Reset & Global Styles --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f9fafb;
+  color: #1e293b;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+/* --- 2. Header --- */
+header {
+  background: #fff;
+  padding: 20px 0;
+  border-bottom: 1px solid #f1f5f9;
+  height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgb(245, 245, 245, 0.95); /* Updated Background Color */
+}
+
+.nav-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0a3d62;
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #0a3d62;
+  font-weight: 600;
+}
+
+/* --- 3. Hero Section --- */
+.about-hero {
+  padding: 80px 20px 60px 20px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.about-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #0a3d62;
+  margin-bottom: 16px;
+}
+
+.about-subtitle {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 18px;
+  color: #64748b;
+}
+
+/* --- 4. Content Sections (Mission/Vision) --- */
+.content-section {
+  padding: 60px 0;
+  background-color: #fff;
+}
+
+.split-layout {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr; /* Label takes less space than text */
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.section-label {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0a3d62;
+}
+
+.text-block p {
+  margin-bottom: 24px;
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.text-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- 5. Features Grid (Why Briwill) --- */
+.features-section {
+  padding: 80px 0;
+  background-color: #f9fafb; /* Slightly grey to separate */
+}
+
+.center-heading {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #0a3d62;
+  margin-bottom: 48px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.feature-card {
+  background: #fff;
+  padding: 32px 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.feature-icon {
+  margin-bottom: 16px;
+  color: #0a3d62;
+}
+
+.feature-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+}
+
+.feature-card p {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* --- 6. Company Info Box --- */
+.info-section {
+  padding: 40px 0 80px 0;
+  background: #f9fafb;
+}
+
+.info-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.info-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0a3d62;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 16px;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.info-key {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-val {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.info-val.highlight {
+  color: #0a3d62;
+  font-weight: 600;
+}
+
+/* --- 7. CTA Section --- */
+.cta-section {
+  background: #fff;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.cta-heading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0a3d62;
+  margin-bottom: 16px;
+}
+
+.btn-cta {
+  background-color: #f59e0b;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: background 0.2s;
+  display: inline-block;
+}
+
+.btn-cta:hover {
+  background-color: #d97706;
+}
+
+/* --- 8. Footer (Shared) --- */
+footer {
+  background-color: #fff;
+  padding: 60px 0 40px 0;
+  border-top: 1px solid #f1f5f9;
+  margin-top: auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-col h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0a3d62;
+  margin-bottom: 12px;
+}
+
+.footer-col p {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.footer-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.footer-links a {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 13px;
+  color: #94a3b8;
+  padding-top: 30px;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* --- 9. Responsiveness --- */
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 30px;
+  }
+
+  .split-layout {
+    grid-template-columns: 1fr; /* Stack Mission/Vision */
+    gap: 16px;
+  }
+
+  .section-label {
+    margin-bottom: 8px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr; /* Stack Cards */
+  }
+
+  .info-card {
+    padding: 24px;
+  }
+
+  .info-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    margin-bottom: 24px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

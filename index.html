@@ -98,6 +98,7 @@
                     <span class="timer-label">SECONDS</span>
                 </div>
             </div>
+            <p  class="launch-date">Launching 17 February 2027</p>
         </div>
     </section>
 
@@ -200,11 +201,8 @@
     </footer>
 
     <script>
-        // Set launch date
-        const launchDate = new Date();
-        launchDate.setDate(launchDate.getDate() + 368); 
-        launchDate.setHours(launchDate.getHours() + 23);
-        launchDate.setMinutes(launchDate.getMinutes() + 59);
+        // Set launch date to 17 February 2027
+        const launchDate = new Date('February 17, 2027 00:00:00');
 
         function updateCountdown() {
             const now = new Date().getTime();

@@ -33,6 +33,7 @@ header h1 {
   color: #0a3d62; /* Updated Color */
   padding-left: 20px;
   padding-top: 10px;
+  font-family: "poppins", sans-serif;
 }
 header nav a {
   margin-right: 20px;
@@ -261,6 +262,13 @@ footer {
   grid-template-columns: 1fr; /* Mobile default */
   gap: 40px;
   margin-bottom: 40px;
+}
+
+.socials {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: flex-start;
 }
 
 .footer-label {

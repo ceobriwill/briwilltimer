@@ -219,6 +219,17 @@ a {
   text-align: center;
 }
 
+#homeMessage {
+  position: fixed;
+  top: 20px; /* distance from top */
+  right: 20px; /* distance from right */
+  max-width: 300px;
+  padding: 15px;
+  background: #e0ffe0; /* light green for success */
+  border: 1px solid green;
+  border-radius: 8px;
+  z-index: 9999; /* make sure it's on top of everything */
+}
 /* --- 5. Features Section --- */
 .features-section {
   padding: 80px 0;

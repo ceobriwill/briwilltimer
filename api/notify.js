@@ -76,8 +76,8 @@ export default async function handler(req, res) {
 
       <div
         style="
-          display: flex;
-          flex-direction: column;
+          display: grid;
+          grid-template-columns: 1fr;
           gap: 10px;
           text-align: center;
           margin-top: 20px;
@@ -176,6 +176,15 @@ export default async function handler(req, res) {
         status: "error",
         message: "Email failed to send",
       });
+    }
+
+    // increment live waitlist
+    if (!message) {
+      try {
+        await fetch(`${process.env.Base_URL}/api/counter`, { method: "POST" });
+      } catch (err) {
+        console.error("Failed to update waitlist counter");
+      }
     }
 
     return res.status(200).json({ status: "success" });

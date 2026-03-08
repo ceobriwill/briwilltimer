@@ -133,6 +133,9 @@
 </form>
 
                 <p class="spam-text">We'll notify you when we launch. No spam.</p>
+                <div id="liveCounter" style=" color: blue;font-family: Arial; font-size: 14px; font-style: italic; text-align:center; margin-top:20px;">
+  <span id="counterNumber">500</span> people have joined the waitlist!!!<span style="font-style: normal;">🔔</span>
+</div>
             </div>
         </div>
     </section>
@@ -370,6 +373,25 @@ homeForm.addEventListener("submit", async (e) => {
     btn.textContent = "Notify Me";
   }
 });
+
+<!-- live waitlist counter -->
+const counterNumber = document.getElementById("counterNumber");
+
+async function updateCounter() {
+  try {
+    const res = await fetch("/api/counter");
+    const data = await res.json();
+    counterNumber.textContent = data.count;
+  } catch (err) {
+    console.error("Failed to fetch counter", err);
+  }
+}
+
+// initial load
+updateCounter();
+
+// refresh every 10 seconds to show new signups
+setInterval(updateCounter, 10000);
     </script>
 </body>
 </html>

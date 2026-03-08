@@ -307,20 +307,58 @@
         </div>
     </footer>
 <script>
-document.getElementById("contactForm").addEventListener("submit", async e => {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.target));
+const contactForm = document.getElementById("contactForm");
+const contactMessage = document.getElementById("contactMessage");
 
+contactForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const btn = contactForm.querySelector("button[type='submit']");
+  btn.disabled = true;
+  btn.textContent = "Sending...";
+
+  const data = Object.fromEntries(new FormData(contactForm));
+
+  try {
     const res = await fetch("/api/notify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
     });
 
     const result = await res.json();
-    alert(result.status === "success"
-        ? "Check your inbox! We’ll notify you soon."
-        : "Oops! Something went wrong, try again.");
+
+    if (result.status === "success") {
+      contactMessage.style.color = "green";
+      contactMessage.textContent = "✅ Message sent! We'll get back to you soon.";
+      contactMessage.style.display = "block";
+
+      contactForm.reset();
+
+      setTimeout(() => {
+        contactMessage.style.display = "none";
+      }, 5000);
+
+    } else {
+      throw new Error("Failed");
+    }
+
+  } catch (err) {
+    contactMessage.style.color = "red";
+    contactMessage.textContent = "⚠️ Something went wrong. Please try again.";
+    contactMessage.style.display = "block";
+
+    setTimeout(() => {
+      contactMessage.style.display = "none";
+    }, 5000);
+
+    console.error(err);
+  }
+
+  btn.disabled = false;
+  btn.textContent = "Send Message";
 });
 </script>
 </body>

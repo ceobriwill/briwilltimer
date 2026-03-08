@@ -318,20 +318,58 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        document.getElementById("homeForm").addEventListener("submit", async e => {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.target));
+const homeForm = document.getElementById("homeForm");
+const homeMessage = document.getElementById("homeMessage");
 
+homeForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const btn = homeForm.querySelector("button[type='submit']");
+  btn.disabled = true;
+  btn.textContent = "Sending...";
+
+  const data = Object.fromEntries(new FormData(homeForm));
+
+  try {
     const res = await fetch("/api/notify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
     });
 
     const result = await res.json();
-    alert(result.status === "success"
-        ? "Check your inbox! We’ll notify you soon."
-        : "Oops! Something went wrong, try again.");
+
+    if (result.status === "success") {
+      homeMessage.style.color = "green";
+      homeMessage.textContent = "✅ You're on the Briwill waitlist!";
+      homeMessage.style.display = "block";
+
+      homeForm.reset();
+
+      setTimeout(() => {
+        homeMessage.style.display = "none";
+      }, 5000);
+
+    } else {
+      throw new Error("Failed");
+    }
+
+  } catch (err) {
+    homeMessage.style.color = "red";
+    homeMessage.textContent = "⚠️ Something went wrong. Please try again.";
+    homeMessage.style.display = "block";
+
+    setTimeout(() => {
+      homeMessage.style.display = "none";
+    }, 5000);
+
+    console.error(err);
+  }
+
+  btn.disabled = false;
+  btn.textContent = "Notify Me";
 });
     </script>
 </body>

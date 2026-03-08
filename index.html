@@ -333,43 +333,40 @@ homeForm.addEventListener("submit", async (e) => {
   try {
     const res = await fetch("/api/notify", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
     });
+
 
     const result = await res.json();
 
     if (result.status === "success") {
       homeMessage.style.color = "green";
-      homeMessage.textContent = "✅ You're on the Briwill waitlist!";
+      homeMessage.innerHTML = "✅ You're on the Briwill waitlist!";
       homeMessage.style.display = "block";
-
       homeForm.reset();
 
+      // Fade out after 5 seconds
       setTimeout(() => {
         homeMessage.style.display = "none";
       }, 5000);
 
     } else {
-      throw new Error("Failed");
+      homeMessage.style.color = "red";
+      homeMessage.textContent =
+        result.message || "⚠️ Something went wrong. Please try again.";
+      homeMessage.style.display = "block";
     }
 
   } catch (err) {
     homeMessage.style.color = "red";
     homeMessage.textContent = "⚠️ Something went wrong. Please try again.";
     homeMessage.style.display = "block";
-
-    setTimeout(() => {
-      homeMessage.style.display = "none";
-    }, 5000);
-
     console.error(err);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Notify Me";
   }
-
-  btn.disabled = false;
-  btn.textContent = "Notify Me";
 });
     </script>
 </body>

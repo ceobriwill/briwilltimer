@@ -322,43 +322,39 @@ contactForm.addEventListener("submit", async (e) => {
   try {
     const res = await fetch("/api/notify", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
     });
 
     const result = await res.json();
 
     if (result.status === "success") {
       contactMessage.style.color = "green";
-      contactMessage.textContent = "✅ Message sent! We'll get back to you soon.";
+      contactMessage.innerHTML = "✅ Thanks for contacting Briwill! We’ll reply soon.";
       contactMessage.style.display = "block";
-
       contactForm.reset();
 
+      // Fade out after 5 seconds
       setTimeout(() => {
         contactMessage.style.display = "none";
       }, 5000);
 
     } else {
-      throw new Error("Failed");
+      contactMessage.style.color = "red";
+      contactMessage.textContent =
+        result.message || "⚠️ Something went wrong. Please try again.";
+      contactMessage.style.display = "block";
     }
 
   } catch (err) {
     contactMessage.style.color = "red";
     contactMessage.textContent = "⚠️ Something went wrong. Please try again.";
     contactMessage.style.display = "block";
-
-    setTimeout(() => {
-      contactMessage.style.display = "none";
-    }, 5000);
-
     console.error(err);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Send Message";
   }
-
-  btn.disabled = false;
-  btn.textContent = "Send Message";
 });
 </script>
 </body>

@@ -55,7 +55,15 @@ export default async function handler(req, res) {
     const emailContent = message
       ? `
 <div style="font-family: Arial; padding-left: 30px; padding-right: 30px">
-      <h3>Thanks for contacting Briwill ✨</h3>
+      <div style="margin: 20px 0; display: flex">
+        <img
+          src="https://briwill.co/image/briwilllogo7.png"
+          style="width: 60px"
+        />
+        <h2 style="letter-spacing: 4px">BRIWILL</h2>
+      </div>
+
+      <h4>Thanks for contacting Briwill ✨</h4>
       <p>Hello ${name},</p>
 
       <p>We received your message and our team will get back to you shortly.</p>
@@ -72,10 +80,12 @@ export default async function handler(req, res) {
           flex-direction: column;
           gap: 10px;
           text-align: center;
+          margin-top: 20px;
+          letter-spacing: 2px;
         "
       >
         <p style="margin: 0">Best regards</p>
-        <h3 style="margin: 0">Briwill LTD</h3>
+        <h3 style="margin: 0; letter-spacing: 1px">Briwill LTD</h3>
         <p style="margin: 0">✉️ hello@briwill.co</p>
         <p style="font-size: 12px; color: #888; margin: 0">
           © 2026 Briwill. All rights reserved

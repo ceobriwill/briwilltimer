@@ -20,23 +20,26 @@ export default async function handler(req, res) {
     const listId = message ? CONTACT_LIST_ID : HOME_LIST_ID;
 
     // 1️⃣ Add contact to Sendinblue list
-    await fetch("https://api.sendinblue.com/v3/contacts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "api-key": process.env.SENDINBLUE_API_KEY,
-      },
-      body: JSON.stringify({
-        email: email,
-        attributes: {
-          FIRSTNAME: name,
-          SUBJECT: subject || "",
-          MESSAGE: message || "",
+    const contactResponse = await fetch(
+      "https://api.sendinblue.com/v3/contacts",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "api-key": process.env.SENDINBLUE_API_KEY,
         },
-        listIds: [listId],
-        updateEnabled: true,
-      }),
-    });
+        body: JSON.stringify({
+          email: email,
+          attributes: {
+            FIRSTNAME: name,
+            SUBJECT: subject || "",
+            MESSAGE: message || "",
+          },
+          listIds: [listId],
+          updateEnabled: true,
+        }),
+      },
+    );
 
     if (!contactResponse.ok) {
       const errorText = await contactResponse.text();

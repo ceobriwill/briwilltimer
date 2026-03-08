@@ -331,18 +331,12 @@ contactForm.addEventListener("submit", async (e) => {
     const result = await res.json();
 
     if (result.status === "success") {
+      // ✅ Simple confirmation for contact form
       contactMessage.style.color = "green";
-      contactMessage.innerHTML = `
-        <h3>Thanks for contacting Briwill ✨</h3>
-        <p>Hello ${data.name || "there"},</p>
-        <p>We received your message and our team will get back to you shortly.</p>
-        <p><strong>Your message:</strong> ${data.message || "No message provided"}</p>
-      `;
+      contactMessage.textContent = `✅ Thanks ${data.name || "there"}! Your message was sent successfully.`;
       contactMessage.style.display = "block";
-
       contactForm.reset();
 
-      // Auto-hide after 5 seconds
       setTimeout(() => {
         contactMessage.style.display = "none";
       }, 5000);

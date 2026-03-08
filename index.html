@@ -344,18 +344,12 @@ homeForm.addEventListener("submit", async (e) => {
     const result = await res.json();
 
     if (result.status === "success") {
+      // ✅ Show simple confirmation for the site
       homeMessage.style.color = "green";
-      homeMessage.innerHTML = `
-        <h3>Welcome to Briwill Waitlist 🥳🎊</h3>
-        <p>Hello ${data.name || "there"},</p>
-        <p>You're officially on the waitlist 🎉. When we launch, you'll be among the first to be notified. Thanks for joining <strong>Briwill</strong>!</p>
-        <a href="https://briwill.co" style="display:inline-block; margin-top:10px; padding:8px 15px; background:blue; color:white; text-decoration:none; border-radius:5px;">Visit Briwill</a>
-      `;
+      homeMessage.textContent = `✅ Congratulations ${data.name || "there"}, you’ve joined the Briwill waitlist! 🎊`;
       homeMessage.style.display = "block";
-
       homeForm.reset();
 
-      // Auto-hide after 5 seconds
       setTimeout(() => {
         homeMessage.style.display = "none";
       }, 5000);

@@ -1,0 +1,211 @@
+/* --- 1. Reset & Global Styles --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #fff;
+  color: #1e293b;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0a3d62; /* Updated Color */
+  padding-left: 20px;
+  padding-top: 10px;
+  font-family: "poppins", sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+/* --- 2. Header --- */
+header {
+  background: #fff;
+  padding: 20px 0;
+  border-bottom: 1px solid #f1f5f9;
+  height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 5px 0px 1.2px;
+}
+
+.nav-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0a3d62;
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #0a3d62;
+  font-weight: 600;
+}
+
+.main-section-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 0 20px;
+}
+
+/* Article styles */
+article {
+  color: #4a4a4a;
+  font-size: 0.9rem;
+}
+article h2 {
+  font-size: 2.5rem;
+  padding-bottom: 0.5rem;
+  color: #1b3a6b;
+}
+article time {
+  font-size: 0.9rem;
+}
+article hr {
+  margin-top: 1rem;
+}
+
+article h3 {
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #1b3a6b;
+}
+
+article h4 {
+  margin-top: 0.6rem;
+  margin-bottom: 0.5rem;
+  color: #1b3a6b;
+}
+
+article ul {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+article li {
+  margin-bottom: 1rem;
+}
+
+.how-we-share-p-heading {
+  color: #1b3a6b;
+  font-weight: 700;
+}
+
+/* footer styles */
+footer {
+  background-color: rgb(245, 245, 245, 0.95);
+  padding: 60px 0 40px 0;
+  border-top: 1px solid #f1f5f9;
+  margin-top: auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-col h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0a3d62;
+  margin-bottom: 12px;
+}
+
+.socials {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.footer-col p {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.footer-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+footer a:hover {
+  color: #f59e0b;
+}
+
+.footer-links a {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 13px;
+  color: #94a3b8;
+  padding-top: 30px;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* --- 9. Responsiveness --- */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    margin: 2rem auto;
+  }
+
+  article h3 {
+    font-size: 1.3rem;
+  }
+}

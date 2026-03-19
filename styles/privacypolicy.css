@@ -79,6 +79,8 @@ header {
   font-weight: 600;
 }
 
+/* Article styles */
+
 .main-section-container {
   width: 100%;
   max-width: 1200px;
@@ -86,10 +88,14 @@ header {
   padding: 0 20px;
 }
 
-/* Article styles */
 article {
   color: #4a4a4a;
   font-size: 0.9rem;
+}
+
+article a {
+  text-decoration: underline;
+  color: blue;
 }
 article h2 {
   font-size: 2.5rem;

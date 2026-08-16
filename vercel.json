@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/daily-increment",
+      "schedule": "0 0 * * *"
+    }
+  ]
+}

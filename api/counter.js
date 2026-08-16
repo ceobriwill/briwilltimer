@@ -1,35 +1,38 @@
-import fs from 'fs';
-import path from 'path';
+import { Redis } from "@upstash/redis";
 
-const counterFile = path.join(process.cwd(), 'counter.json');
+const redis = Redis.fromEnv();
+const COUNTER_KEY = "waitlist_count";
+const STARTING_COUNT = 500;
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method === "GET") {
-    // read current count
-    let count = 500; // start from 500
     try {
-      const data = fs.readFileSync(counterFile, 'utf8');
-      count = JSON.parse(data).count || 500;
+      let count = await redis.get(COUNTER_KEY);
+      if (count === null || count === undefined) {
+        count = STARTING_COUNT;
+        await redis.set(COUNTER_KEY, count);
+      }
+      return res.status(200).json({ count });
     } catch (err) {
-      count = 500;
+      console.error("Counter GET error:", err);
+      return res.status(200).json({ count: STARTING_COUNT });
     }
-    return res.status(200).json({ count });
   }
 
   if (req.method === "POST") {
-    // increment count
-    let count = 500; // default starting point
     try {
-      const data = fs.readFileSync(counterFile, 'utf8');
-      count = JSON.parse(data).count || 500;
+      // ensure key exists before incrementing (first-run safety)
+      const exists = await redis.get(COUNTER_KEY);
+      if (exists === null || exists === undefined) {
+        await redis.set(COUNTER_KEY, STARTING_COUNT);
+      }
+      const count = await redis.incr(COUNTER_KEY);
+      return res.status(200).json({ count });
     } catch (err) {
-      count = 500;
+      console.error("Counter POST error:", err);
+      return res.status(500).json({ message: "Failed to update counter" });
     }
-
-    count++; // add 1 for new signup
-    fs.writeFileSync(counterFile, JSON.stringify({ count }));
-    return res.status(200).json({ count });
   }
 
-  res.status(405).json({ message: "Method not allowed" });
+  return res.status(405).json({ message: "Method not allowed" });
 }

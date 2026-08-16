@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -14,15 +15,18 @@
     <!--meta property is unique to each page-->
     <meta property="og:site_name" content="Briwill" />
     <!--fill this up and remove the default briwillfavcon-->
-    <meta property="og:image" content="https://briwill.co/image/briwill34.png" />
-    <meta property="og:url" content="https://briwill.co">
+    <meta
+      property="og:image"
+      content="https://briwill.co/image/briwill34.png"
+    />
+    <meta property="og:url" content="https://briwill.co" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_NG" />
     <meta
       property="og:title"
       content="Briwill | Online Shopping for Electronics, Fashion, Home, Beauty, Sport"
     />
-    <meta property="og:url" content="https://briwill.co">
+    <meta property="og:url" content="https://briwill.co" />
     <meta
       property="og:description"
       content="Briwill is the #1 of Online Shopping in Nigeria - Shop Online All Products : Smartphones, Appliances, Clothing... ✓ Top Brands :  Samsung, Xiaomi, Adidas... ✓ Best prices in Nigeria ✓ Order now and enjoy pay on delivery ! "
@@ -43,13 +47,13 @@
     <!-- <link rel="preload" href="css/styles.css" as="style" /> -->
     <link rel="stylesheet" href="styles/index.css" />
     <link rel="icon" type="image/jpeg" href="image/briwillfg.jpeg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" /> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> 
-     <link
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"
     />
-     <link
+    <link
       rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       as="style"
@@ -62,340 +66,422 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-</head>
-<body>
-  <header>
-    <h1 class="briwilllogo">Briwill</h1>
-    <nav>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1 class="briwilllogo">Briwill</h1>
+      <nav>
         <a href="#">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    
-  </header>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
 
-  <main>
-    <section class="hero-section">
+    <main>
+      <section class="hero-section">
         <div class="container">
-            <h1>BRIWILL is Coming</h1>
-            <p class="hero-subtext">
-                A next-generation online marketplace built for trusted shopping and seamless delivery.
-            </p>
+          <h1>BRIWILL is Coming</h1>
+          <p class="hero-subtext">
+            A next-generation online marketplace built for trusted shopping and
+            seamless delivery.
+          </p>
 
-            <div class="countdown-container" id="countdown">
-                <div class="timer-box">
-                    <span class="timer-number" id="days">368</span>
-                    <span class="timer-label">DAYS</span>
-                </div>
-                <div class="timer-box">
-                    <span class="timer-number" id="hours">23</span>
-                    <span class="timer-label">HOURS</span>
-                </div>
-                <div class="timer-box">
-                    <span class="timer-number" id="minutes">59</span>
-                    <span class="timer-label">MINUTES</span>
-                </div>
-                <div class="timer-box">
-                    <span class="timer-number" id="seconds">17</span>
-                    <span class="timer-label">SECONDS</span>
-                </div>
+          <div class="countdown-container" id="countdown">
+            <div class="timer-box">
+              <span class="timer-number" id="days">368</span>
+              <span class="timer-label">DAYS</span>
             </div>
-            <p  class="launch-date">Launching 17 February 2027</p>
+            <div class="timer-box">
+              <span class="timer-number" id="hours">23</span>
+              <span class="timer-label">HOURS</span>
+            </div>
+            <div class="timer-box">
+              <span class="timer-number" id="minutes">59</span>
+              <span class="timer-label">MINUTES</span>
+            </div>
+            <div class="timer-box">
+              <span class="timer-number" id="seconds">17</span>
+              <span class="timer-label">SECONDS</span>
+            </div>
+          </div>
+          <p class="launch-date">Launching 17 February 2027</p>
         </div>
-    </section>
+      </section>
 
-    <section class="form-section">
+      <section class="form-section">
         <div class="container">
-            <div class="form-wrapper">
-                <div style="text-align: center; margin-bottom: 30px;">
-                    <h2>Get Notified at Launch</h2>
-                    <p>Be the first to experience the future of online shopping in Nigeria.</p>
-                </div>
-
-               
-
-     <form id="homeForm">
-    <div class="form-group">
-        <label class="form-label">Full Name</label>
-        <input name="name" type="text" class="form-input" placeholder="Enter your full name" required>
-    </div>
-
-    <div class="form-group">
-        <label class="form-label">Email Address</label>
-        <input name="email" type="email" class="form-input" placeholder="Enter your email address" required>
-    </div>
-
-    <button type="submit" class="btn-submit">Notify Me</button>
-    <div id="homeMessage" style="display: none;">
-      
-
-    </div>
-</form>
-
-                <p class="spam-text">We'll notify you when we launch. No spam.</p>
-                <div id="liveCounter"  style=" display: none;   color: blue;font-family: Arial; font-size: 14px; font-style: italic; text-align:center; margin-top:20px;">
-  <span id="counterNumber">500</span> people have joined the waitlist!!!<span style="font-style: normal;">🔔</span>
-</div>
+          <div class="form-wrapper">
+            <div style="text-align: center; margin-bottom: 30px">
+              <h2>Get Notified at Launch</h2>
+              <p>
+                Be the first to experience the future of online shopping in
+                Nigeria.
+              </p>
             </div>
-        </div>
-    </section>
 
-    <section class="features-section">
+            <form id="homeForm">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input
+                  name="name"
+                  type="text"
+                  class="form-input"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input
+                  name="email"
+                  type="email"
+                  class="form-input"
+                  placeholder="Enter your email address"
+                  required
+                />
+              </div>
+
+              <button type="submit" class="btn-submit">Notify Me</button>
+              <div id="homeMessage" style="display: none"></div>
+            </form>
+
+            <p class="spam-text">We'll notify you when we launch. No spam.</p>
+            <div id="liveCounter" style="display: none">
+              <span class="counter-pulse"></span>
+              <span id="counterNumber">500</span>
+              <span class="counter-label"
+                >people already joined the waitlist</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features-section">
         <div class="container">
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="icon-box">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.748 3.748 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-                        </svg>
-                    </div>
-                    <h3>Secure Payments</h3>
-                    <p>Bank-grade encryption for all transactions</p>
-                </div>
-
-                <div class="feature-item">
-                    <div class="icon-box">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon" stroke-width="1.5">
-                            <path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18455 2.99721 7.13631 4.39828 5.49706C5.79935 3.85781 7.69279 2.71537 9.79619 2.24013C11.8996 1.7649 14.1003 1.98232 16.07 2.85999" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M22 4L12 14.01L9 11.01" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Verified Sellers</h3>
-                    <p>Every merchant is thoroughly vetted</p>
-                </div>
-
-                <div class="feature-item">
-                    <div class="icon-box">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path class="svg-icon" d="M1 3H15V13H1V3Z" stroke-width="1.5" stroke-linejoin="round"/>
-                            <path class="svg-icon" d="M16 8H20L23 11V13H16V8Z" stroke-width="1.5" stroke-linejoin="round"/>
-                            <circle class="svg-icon" cx="5.5" cy="15.5" r="2.5" stroke-width="1.5"/>
-                            <circle class="svg-icon" cx="18.5" cy="15.5" r="2.5" stroke-width="1.5"/>
-                        </svg>
-                    </div>
-                    <h3>Reliable Delivery</h3>
-                    <p>Track your orders in real-time</p>
-                </div>
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="icon-box">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="svg-icon"
+                  stroke-width="1.5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.748 3.748 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
+                  />
+                </svg>
+              </div>
+              <h3>Secure Payments</h3>
+              <p>Bank-grade encryption for all transactions</p>
             </div>
+
+            <div class="feature-item">
+              <div class="icon-box">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="svg-icon"
+                  stroke-width="1.5"
+                >
+                  <path
+                    d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18455 2.99721 7.13631 4.39828 5.49706C5.79935 3.85781 7.69279 2.71537 9.79619 2.24013C11.8996 1.7649 14.1003 1.98232 16.07 2.85999"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M22 4L12 14.01L9 11.01"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>Verified Sellers</h3>
+              <p>Every merchant is thoroughly vetted</p>
+            </div>
+
+            <div class="feature-item">
+              <div class="icon-box">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    class="svg-icon"
+                    d="M1 3H15V13H1V3Z"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    class="svg-icon"
+                    d="M16 8H20L23 11V13H16V8Z"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                  />
+                  <circle
+                    class="svg-icon"
+                    cx="5.5"
+                    cy="15.5"
+                    r="2.5"
+                    stroke-width="1.5"
+                  />
+                  <circle
+                    class="svg-icon"
+                    cx="18.5"
+                    cy="15.5"
+                    r="2.5"
+                    stroke-width="1.5"
+                  />
+                </svg>
+              </div>
+              <h3>Reliable Delivery</h3>
+              <p>Track your orders in real-time</p>
+            </div>
+          </div>
         </div>
-    </section>
- </main>
+      </section>
+    </main>
 
     <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h4>BRIWILL LTD</h4>
-                    <p style="margin-bottom: 2px;">Connecting Buyers to Possibilities</p>
-                    <p>Building trust in e-commerce</p>
-                </div>
-
-                <div>
-                    <p class="footer-label" id="contact">CONTACT</p>
-                    <div class="footer-links">
-                        <a href="mailto:hello@briwill.co">Hello@briwill.co</a>
-                        <div>
-                             <div class="socials">
-            <a href="https://www.facebook.com/share/1CbF4PYstc" target="_blank" aria-label="briwill facebook page">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#1e293b"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="socials-icon"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path
-                  d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"
-                />
-              </svg>
-            </a>
-            <a href="https://x.com/briwillhq?s=20" target="_blank" aria-label="briwill twitter page">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#1e293b"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="socials-icon"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path
-                  d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c0 -.249 1.51 -2.772 1.818 -4.013l0 .001"
-                /></svg>
-            </a>
-
-            <a
-              href="https://www.instagram.com/briwillhq?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-              target="_blank"
-              aria-label="briwill instagram page"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#1e293b"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="socials-icon"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path
-                  d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4l0 -8"
-                />
-                <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                <path d="M16.5 7.5v.01" />
-              </svg>
-            </a>
-
-            <a
-              href="https://www.tiktok.com/@briwillhq?is_from_webapp=1&sender_device=pc"
-              target="_blank"
-              aria-label="briwill tiktok page"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#1e293b"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="socials-icon"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path
-                  d="M21 7.917v4.034a9.948 9.948 0 0 1 -5 -1.951v4.5a6.5 6.5 0 1 1 -8 -6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917"
-                />
-              </svg>
-            </a>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h4>BRIWILL LTD</h4>
+            <p style="margin-bottom: 2px">Connecting Buyers to Possibilities</p>
+            <p>Building trust in e-commerce</p>
           </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div>
-                    <p class="footer-label">LEGAL</p>
-                    <div class="footer-links">
-                        <a href="privacypolicy.html">Privacy Policy</a>
-                        <a href="termsofservice.html">Terms of Service</a>
-                    </div>
-                </div>
-            </div>
+          <div>
+            <p class="footer-label" id="contact">CONTACT</p>
+            <div class="footer-links">
+              <a href="mailto:hello@briwill.co">Hello@briwill.co</a>
+              <div>
+                <div class="socials">
+                  <a
+                    href="https://www.facebook.com/share/1CbF4PYstc"
+                    target="_blank"
+                    aria-label="briwill facebook page"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#1e293b"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="socials-icon"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path
+                        d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://x.com/briwillhq?s=20"
+                    target="_blank"
+                    aria-label="briwill twitter page"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#1e293b"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="socials-icon"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path
+                        d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c0 -.249 1.51 -2.772 1.818 -4.013l0 .001"
+                      />
+                    </svg>
+                  </a>
 
-            <div class="copyright">
-                © 2025 BRIWILL LTD. All rights reserved.
+                  <a
+                    href="https://www.instagram.com/briwillhq?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    target="_blank"
+                    aria-label="briwill instagram page"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#1e293b"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="socials-icon"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path
+                        d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4l0 -8"
+                      />
+                      <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                      <path d="M16.5 7.5v.01" />
+                    </svg>
+                  </a>
+
+                  <a
+                    href="https://www.tiktok.com/@briwillhq?is_from_webapp=1&sender_device=pc"
+                    target="_blank"
+                    aria-label="briwill tiktok page"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#1e293b"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="socials-icon"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path
+                        d="M21 7.917v4.034a9.948 9.948 0 0 1 -5 -1.951v4.5a6.5 6.5 0 1 1 -8 -6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div>
+            <p class="footer-label">LEGAL</p>
+            <div class="footer-links">
+              <a href="privacypolicy.html">Privacy Policy</a>
+              <a href="termsofservice.html">Terms of Service</a>
+            </div>
+          </div>
         </div>
+
+        <div class="copyright">© 2025 BRIWILL LTD. All rights reserved.</div>
+      </div>
     </footer>
 
     <script>
-      
-        // Set launch date to 17 February 2027
-        const launchDate = new Date('February 17, 2027 00:00:00');
+      // Set launch date to 17 February 2027
+      const launchDate = new Date("February 17, 2027 00:00:00");
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = launchDate - now;
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = launchDate - now;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerText = days;
-            document.getElementById("hours").innerText = hours;
-            document.getElementById("minutes").innerText = minutes;
-            document.getElementById("seconds").innerText = seconds;
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+      }
+
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      const homeForm = document.getElementById("homeForm");
+      const homeMessage = document.getElementById("homeMessage");
+
+      homeForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const btn = homeForm.querySelector("button[type='submit']");
+        btn.disabled = true;
+        btn.textContent = "Sending...";
+
+        const data = Object.fromEntries(new FormData(homeForm));
+
+        try {
+          const res = await fetch("/api/notify", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+
+          const result = await res.json();
+
+          if (result.status === "success") {
+            // ✅ Show simple confirmation for the site
+            homeMessage.style.color = "green";
+            homeMessage.textContent = `✅ Congratulations ${data.name || "there"}, you’ve joined the Briwill waitlist! 🎊`;
+            homeMessage.style.display = "block";
+            homeForm.reset();
+
+            setTimeout(() => {
+              homeMessage.style.display = "none";
+            }, 5000);
+          } else {
+            homeMessage.style.color = "red";
+            homeMessage.textContent =
+              result.message || "⚠️ Something went wrong. Please try again.";
+            homeMessage.style.display = "block";
+          }
+        } catch (err) {
+          homeMessage.style.color = "red";
+          homeMessage.textContent =
+            "⚠️ Something went wrong. Please try again.";
+          homeMessage.style.display = "block";
+          console.error(err);
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Notify Me";
         }
+      });
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+      // live waitlist counter
+      const counterNumber = document.getElementById("counterNumber");
+      const liveCounter = document.getElementById("liveCounter");
 
-const homeForm = document.getElementById("homeForm");
-const homeMessage = document.getElementById("homeMessage");
+      async function updateCounter() {
+        try {
+          const res = await fetch("/api/counter");
+          const data = await res.json();
+          counterNumber.textContent = data.count;
+          liveCounter.style.display = "flex";
+        } catch (err) {
+          console.error("Failed to fetch counter", err);
+        }
+      }
 
-homeForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+      // initial load
+      updateCounter();
 
-  const btn = homeForm.querySelector("button[type='submit']");
-  btn.disabled = true;
-  btn.textContent = "Sending...";
-
-  const data = Object.fromEntries(new FormData(homeForm));
-
-  try {
-    const res = await fetch("/api/notify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-
-    const result = await res.json();
-
-    if (result.status === "success") {
-      // ✅ Show simple confirmation for the site
-      homeMessage.style.color = "green";
-      homeMessage.textContent = `✅ Congratulations ${data.name || "there"}, you’ve joined the Briwill waitlist! 🎊`;
-      homeMessage.style.display = "block";
-      homeForm.reset();
-
-      setTimeout(() => {
-        homeMessage.style.display = "none";
-      }, 5000);
-
-    } else {
-      homeMessage.style.color = "red";
-      homeMessage.textContent = result.message || "⚠️ Something went wrong. Please try again.";
-      homeMessage.style.display = "block";
-    }
-
-  } catch (err) {
-    homeMessage.style.color = "red";
-    homeMessage.textContent = "⚠️ Something went wrong. Please try again.";
-    homeMessage.style.display = "block";
-    console.error(err);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = "Notify Me";
-  }
-});
-
-<!-- live waitlist counter -->
-const counterNumber = document.getElementById("counterNumber");
-
-async function updateCounter() {
-  try {
-    const res = await fetch("/api/counter");
-    const data = await res.json();
-    counterNumber.textContent = data.count;
-  } catch (err) {
-    console.error("Failed to fetch counter", err);
-  }
-}
-
-// initial load
-updateCounter();
-
-// refresh every 10 seconds to show new signups
-setInterval(updateCounter, 10000);
+      // refresh every 60 seconds to show new signups
+      setInterval(updateCounter, 60000);
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
-</body>
+  </body>
 </html>

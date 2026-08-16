@@ -150,6 +150,75 @@ a {
   letter-spacing: 0.5px;
   margin-top: 4px;
 }
+/* £££££££££££££££££££££££££££££££££££££££££££££££££££££ */
+/* --- Live Waitlist Counter --- */
+#liveCounter {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 10px 20px;
+  background: #fff7ed;
+  border: 1px solid #fde5c4;
+  border-radius: 999px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.counter-pulse {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+}
+
+.counter-pulse::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: counterPulse 1.6s ease-out infinite;
+}
+
+@keyframes counterPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+#counterNumber {
+  font-weight: 700;
+  color: #0a3d62;
+  font-size: 15px;
+}
+
+.counter-label {
+  font-size: 14px;
+  color: #64748b;
+  font-family: "Inter", sans-serif;
+}
+
+@media (max-width: 600px) {
+  #liveCounter {
+    padding: 8px 14px;
+  }
+  .counter-label {
+    font-size: 12px;
+  }
+}
 
 /* --- 4. Form Section --- */
 .form-section {

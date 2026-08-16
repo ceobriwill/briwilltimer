@@ -394,27 +394,40 @@ footer {
   }
 }
 
-/* Mobile Adjustments (max-width: 600px) */
 @media (max-width: 600px) {
   header {
     height: 60px;
   }
   .hero-section {
-    padding: 50px 0;
+    padding: 24px 0 30px 0; /* was 50px 0 — cut the vertical padding */
+  }
+  .hero-subtext {
+    font-size: 15px;
+    margin-bottom: 20px; /* was 40px — tighter gap before countdown */
+  }
+  .countdown-container {
+    gap: 8px; /* was 15px — tighter boxes */
+  }
+  .timer-box {
+    width: 65px; /* slightly smaller */
+    height: 70px;
+  }
+  .timer-number {
+    font-size: 22px;
+  }
+  .timer-label {
+    font-size: 9px;
+  }
+  .launch-date {
+    margin-top: 16px; /* was 30px */
+    font-size: 12px;
+  }
+  .form-section {
+    padding: 30px 0; /* was 60px — pulls form section up */
   }
   .form-wrapper {
     padding: 24px;
     box-shadow: none;
     border: 1px solid #e2e8f0;
-  }
-  .timer-box {
-    width: 70px;
-    height: 80px;
-  }
-  .timer-number {
-    font-size: 24px;
-  }
-  .timer-label {
-    font-size: 9px;
   }
 }

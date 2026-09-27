@@ -5,6 +5,17 @@ export default async function handler(req, res) {
 
   const { name, email, subject, message, whatsapp } = req.body;
 
+  // Normalize Nigerian numbers to E.164 format (+234...) for Brevo/WhatsApp Cloud API
+  function normalizeWhatsApp(number) {
+    if (!number) return "";
+    const digits = number.replace(/\D/g, ""); // strip spaces, dashes, etc.
+    if (digits.startsWith("234")) return `+${digits}`;
+    if (digits.startsWith("0")) return `+234${digits.slice(1)}`;
+    return `+234${digits}`;
+  }
+
+  const formattedWhatsapp = normalizeWhatsApp(whatsapp);
+
   if (!name || !email) {
     return res
       .status(400)
@@ -32,7 +43,7 @@ export default async function handler(req, res) {
           email: email,
           attributes: {
             FIRSTNAME: name,
-            WHATSAPP: whatsapp || "",
+            WHATSAPP: formattedWhatsapp,
             SUBJECT: subject || "",
             MESSAGE: message || "",
           },

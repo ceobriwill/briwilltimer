@@ -3,7 +3,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const { name, email, subject, message } = req.body;
+  const { name, email, subject, message, whatsapp } = req.body;
 
   if (!name || !email) {
     return res
@@ -32,6 +32,7 @@ export default async function handler(req, res) {
           email: email,
           attributes: {
             FIRSTNAME: name,
+            WHATSAPP: whatsapp || "",
             SUBJECT: subject || "",
             MESSAGE: message || "",
           },

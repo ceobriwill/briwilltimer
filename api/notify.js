@@ -57,9 +57,31 @@ export default async function handler(req, res) {
       const errorText = await contactResponse.text();
       console.error("Contact error:", errorText);
 
-      return res.status(500).json({
+      let userMessage = "Something went wrong. Please try again.";
+
+      try {
+        const parsedError = JSON.parse(errorText);
+        const duplicateFields = parsedError?.metadata?.duplicate_identifiers;
+
+        if (
+          parsedError?.code === "duplicate_parameter" &&
+          duplicateFields?.includes("WHATSAPP")
+        ) {
+          userMessage =
+            "This WhatsApp number is already registered with another email. Please use a different number.";
+        } else if (
+          parsedError?.code === "duplicate_parameter" &&
+          duplicateFields?.includes("EMAIL")
+        ) {
+          userMessage = "This email is already on the waitlist.";
+        }
+      } catch (parseErr) {
+        // errorText wasn't valid JSON — fall back to generic message
+      }
+
+      return res.status(400).json({
         status: "error",
-        message: "Failedd to save contact",
+        message: userMessage,
       });
     }
 

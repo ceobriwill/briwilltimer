@@ -190,6 +190,52 @@ export default async function handler(req, res) {
       });
     }
 
+    // 3️⃣ Send WhatsApp confirmation (waitlist signups only, not contact form)
+    if (!message && formattedWhatsapp) {
+      try {
+        const whatsappResponse = await fetch(
+          `https://graph.facebook.com/v21.0/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`,
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              messaging_product: "whatsapp",
+              to: formattedWhatsapp.replace("+", ""),
+              type: "template",
+              template: {
+                name: "waitlist_welcome",
+                language: { code: "en" },
+                components: [
+                  {
+                    type: "body",
+                    parameters: [
+                      {
+                        type: "text",
+                        parameter_name: "customer_name",
+                        text: name,
+                      },
+                    ],
+                  },
+                ],
+              },
+            }),
+          },
+        );
+
+        if (!whatsappResponse.ok) {
+          const whatsappError = await whatsappResponse.text();
+          console.error("WhatsApp send error:", whatsappError);
+          // Don't fail the whole request — email already succeeded
+        }
+      } catch (err) {
+        console.error("WhatsApp send exception:", err);
+        // Don't fail the whole request — email already succeeded
+      }
+    }
+
     // increment live waitlist
     if (!message) {
       try {

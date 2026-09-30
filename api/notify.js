@@ -229,7 +229,7 @@ export default async function handler(req, res) {
               type: "template",
               template: {
                 name: "waitlist_welcome",
-                language: { code: "en" },
+                language: { code: "en_US" },
                 components: [
                   {
                     type: "body",

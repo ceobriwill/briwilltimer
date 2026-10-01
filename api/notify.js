@@ -216,7 +216,7 @@ export default async function handler(req, res) {
     if (!message && formattedWhatsapp) {
       try {
         const whatsappResponse = await fetch(
-          `https://graph.facebook.com/v21.0/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`,
+          `https://graph.facebook.com/v26.0/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`,
           {
             method: "POST",
             headers: {
@@ -227,29 +227,30 @@ export default async function handler(req, res) {
               messaging_product: "whatsapp",
               to: formattedWhatsapp.replace("+", ""),
               type: "template",
+              // TEST MODE: using the approved test template (no variables).
+              // To restore the real template, replace this object with:
+              //   name: "waitlist_welcome",
+              //   language: { code: "en" },  // must match the language shown in Manage templates
+              //   components: [{ type: "body", parameters: [
+              //     { type: "text", parameter_name: "customer_name", text: name },
+              //   ] }],
               template: {
-                name: "waitlist_welcome",
+                name: "3p_direct_integration_test_template",
                 language: { code: "en_US" },
-                components: [
-                  {
-                    type: "body",
-                    parameters: [
-                      {
-                        type: "text",
-                        parameter_name: "customer_name",
-                        text: name,
-                      },
-                    ],
-                  },
-                ],
               },
             }),
           },
         );
 
+        const whatsappResult = await whatsappResponse.text();
+        console.log(
+          "WhatsApp response:",
+          whatsappResponse.status,
+          whatsappResult,
+        );
+
         if (!whatsappResponse.ok) {
-          const whatsappError = await whatsappResponse.text();
-          console.error("WhatsApp send error:", whatsappError);
+          console.error("WhatsApp send error:", whatsappResult);
           // Don't fail the whole request — email already succeeded
         }
       } catch (err) {

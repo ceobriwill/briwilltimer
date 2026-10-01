@@ -16,6 +16,7 @@ export default async function handler(req, res) {
 
   // 2) Incoming events: log message statuses (sent / delivered / read / failed)
   if (req.method === "POST") {
+    console.log("WA EVENT:", JSON.stringify(req.body));
     try {
       const entries = req.body?.entry || [];
       for (const entry of entries) {

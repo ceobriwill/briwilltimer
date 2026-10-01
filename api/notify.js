@@ -227,16 +227,21 @@ export default async function handler(req, res) {
               messaging_product: "whatsapp",
               to: formattedWhatsapp.replace("+", ""),
               type: "template",
-              // TEST MODE: using the approved test template (no variables).
-              // To restore the real template, replace this object with:
-              //   name: "waitlist_welcome",
-              //   language: { code: "en" },  // must match the language shown in Manage templates
-              //   components: [{ type: "body", parameters: [
-              //     { type: "text", parameter_name: "customer_name", text: name },
-              //   ] }],
               template: {
-                name: "3p_direct_integration_test_template",
-                language: { code: "en_US" },
+                name: "waitlist_welcome",
+                language: { code: "en" }, // must match the language shown in Manage templates
+                components: [
+                  {
+                    type: "body",
+                    parameters: [
+                      {
+                        type: "text",
+                        parameter_name: "customer_name",
+                        text: name,
+                      },
+                    ],
+                  },
+                ],
               },
             }),
           },

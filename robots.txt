@@ -1,4 +1,5 @@
 User-agent: *
-Allow: / 
+Allow: /
+Disallow: /api/
 
-sitemap: https://briwill.co/sitemap.xml
+Sitemap: https://briwill.co/sitemap.xml

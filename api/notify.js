@@ -145,7 +145,16 @@ export default async function handler(req, res) {
 
     <tr>
       <td align="left" class="px" style="padding:0 8px 20px 8px;">
-        <img src="https://briwill.co/image/briwilllogo7.png" alt="Briwill" height="40" style="display:block;height:40px;border:0;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td valign="middle" style="padding-right:12px;">
+              <img src="https://briwill.co/image/briwilllogo7.png" alt="Briwill" height="44" style="display:block;height:44px;border:0;">
+            </td>
+            <td valign="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;line-height:28px;font-weight:700;letter-spacing:4px;color:#12306B;">
+              BRIWILL
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
 
@@ -249,7 +258,16 @@ export default async function handler(req, res) {
 
     <tr>
       <td align="left" class="px" style="padding:0 8px 20px 8px;">
-        <img src="https://briwill.co/image/briwilllogo7.png" alt="Briwill" height="40" style="display:block;height:40px;border:0;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td valign="middle" style="padding-right:12px;">
+              <img src="https://briwill.co/image/briwilllogo7.png" alt="Briwill" height="44" style="display:block;height:44px;border:0;">
+            </td>
+            <td valign="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;line-height:28px;font-weight:700;letter-spacing:4px;color:#12306B;">
+              BRIWILL
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
 

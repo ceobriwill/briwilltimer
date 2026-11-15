@@ -147,11 +147,11 @@ export default async function handler(req, res) {
       <td align="left" class="px" style="padding:0 8px 20px 8px;">
         <table role="presentation" cellpadding="0" cellspacing="0" border="0">
           <tr>
-            <td valign="middle" style="padding-right:12px;">
+            <td valign="middle" style="padding:0;">
               <img src="https://briwill.co/image/briwilllogo7.png" alt="Briwill" height="44" style="display:block;height:44px;border:0;">
             </td>
-            <td valign="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;line-height:28px;font-weight:700;letter-spacing:4px;color:#12306B;">
-              BRIWILL
+            <td valign="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;line-height:28px;font-weight:700;letter-spacing:4px;color:#12306B;padding:0;">
+              <span style="display:inline-block;margin-left:-8px;">RIWILL</span>
             </td>
           </tr>
         </table>
@@ -260,11 +260,11 @@ export default async function handler(req, res) {
       <td align="left" class="px" style="padding:0 8px 20px 8px;">
         <table role="presentation" cellpadding="0" cellspacing="0" border="0">
           <tr>
-            <td valign="middle" style="padding-right:12px;">
+            <td valign="middle" style="padding:0;">
               <img src="https://briwill.co/image/briwilllogo7.png" alt="Briwill" height="44" style="display:block;height:44px;border:0;">
             </td>
-            <td valign="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;line-height:28px;font-weight:700;letter-spacing:4px;color:#12306B;">
-              BRIWILL
+            <td valign="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;line-height:28px;font-weight:700;letter-spacing:4px;color:#12306B;padding:0;">
+              <span style="display:inline-block;margin-left:-8px;">RIWILL</span>
             </td>
           </tr>
         </table>

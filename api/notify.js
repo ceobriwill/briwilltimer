@@ -25,12 +25,27 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const { name, email, subject, message, whatsapp } = req.body || {};
+  const { name: rawName, subject, message, whatsapp } = req.body || {};
+  const name = String(rawName || "").trim();
+  const email = String(req.body?.email || "")
+    .trim()
+    .toLowerCase();
 
   if (!name || !email) {
     return res
       .status(400)
       .json({ status: "error", message: "Name and email are required." });
+  }
+
+  if (
+    name.length > 100 ||
+    email.length > 254 ||
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  ) {
+    return res.status(400).json({
+      status: "error",
+      message: "Please enter a valid name and email address.",
+    });
   }
 
   if (message && String(message).length > 5000) {
@@ -42,6 +57,17 @@ export default async function handler(req, res) {
 
   const formattedWhatsapp = normalizeWhatsApp(whatsapp);
   const isContactForm = Boolean(message);
+  // Waitlist signups must have a valid Nigerian mobile number
+  if (!isContactForm) {
+    const cleanNumber = String(whatsapp || "").replace(/[\s-]/g, "");
+    if (!/^(\+234|0)[789][01]\d{8}$/.test(cleanNumber)) {
+      return res.status(400).json({
+        status: "error",
+        message:
+          "Please enter a valid Nigerian WhatsApp number, e.g. 08012345678.",
+      });
+    }
+  }
 
   const safeName = escapeHtml(name);
   const safeSubject = escapeHtml(subject || "");

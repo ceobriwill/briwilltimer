@@ -54,6 +54,22 @@ export default async function handler(req, res) {
   try {
     const listId = isContactForm ? CONTACT_LIST_ID : HOME_LIST_ID;
 
+    // Stop repeat waitlist signups: no second email, WhatsApp or counter bump
+    if (!isContactForm && process.env.ALLOW_DUPLICATE_SIGNUPS !== "true") {
+      const existingResponse = await fetch(
+        `https://api.sendinblue.com/v3/contacts/${encodeURIComponent(email.trim().toLowerCase())}`,
+        { headers: { "api-key": process.env.SENDINBLUE_API_KEY } },
+      );
+      if (existingResponse.ok) {
+        const existing = await existingResponse.json();
+        if (existing.listIds?.includes(HOME_LIST_ID)) {
+          return res.status(400).json({
+            status: "error",
+            message: "This email is already on the waitlist.",
+          });
+        }
+      }
+    }
     // Only send attributes we actually have, so a contact-form message
     // never wipes a waitlist member's saved WhatsApp number or name.
     const attributes = { FIRSTNAME: name };

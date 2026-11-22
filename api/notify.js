@@ -1,3 +1,5 @@
+import { Redis } from "@upstash/redis";
+const redis = Redis.fromEnv();
 // Escape user input before putting it into HTML emails
 function escapeHtml(str = "") {
   return String(str)
@@ -481,11 +483,13 @@ export default async function handler(req, res) {
     }
 
     // increment live waitlist
+    // increment live waitlist
     if (!isContactForm) {
       try {
-        await fetch(`${process.env.Base_URL}/api/counter`, { method: "POST" });
+        await redis.set("waitlist_count", 500, { nx: true });
+        await redis.incr("waitlist_count");
       } catch (err) {
-        console.error("Failed to update waitlist counter");
+        console.error("Failed to update waitlist counter:", err);
       }
     }
 

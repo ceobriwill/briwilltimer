@@ -1,5 +1,25 @@
 import { Redis } from "@upstash/redis";
+import { Ratelimit } from "@upstash/ratelimit";
+
 const redis = Redis.fromEnv();
+
+// Per-IP limits. Raise or lower the numbers if real people get blocked.
+const signupLimiter = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(15, "24 h"),
+  prefix: "rl:signup",
+});
+const contactLimiter = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(5, "1 h"),
+  prefix: "rl:contact",
+});
+
+function getClientIp(req) {
+  const forwarded = req.headers["x-forwarded-for"];
+  if (forwarded) return String(forwarded).split(",")[0].trim();
+  return req.headers["x-real-ip"] || "unknown";
+}
 // Escape user input before putting it into HTML emails
 function escapeHtml(str = "") {
   return String(str)
@@ -23,6 +43,20 @@ function normalizeWhatsApp(number) {
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
+  }
+
+  // Rate limit by IP. If Redis is down, let the request through.
+  try {
+    const limiter = req.body?.message ? contactLimiter : signupLimiter;
+    const { success } = await limiter.limit(getClientIp(req));
+    if (!success) {
+      return res.status(429).json({
+        status: "error",
+        message: "Too many attempts. Please try again later.",
+      });
+    }
+  } catch (err) {
+    console.error("Rate limit error:", err);
   }
 
   const { name: rawName, subject, message, whatsapp } = req.body || {};

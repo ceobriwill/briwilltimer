@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@upstash/ratelimit": "^2.2.2",
     "@upstash/redis": "^1.38.2"
   }
 }

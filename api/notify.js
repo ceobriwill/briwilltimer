@@ -1,5 +1,6 @@
 import { Redis } from "@upstash/redis";
 import { Ratelimit } from "@upstash/ratelimit";
+import { saveSignup } from "../lib/signups.js";
 
 const redis = Redis.fromEnv();
 
@@ -558,8 +559,13 @@ export default async function handler(req, res) {
       }
     }
 
+    // Save a copy of the signup in our own database (never blocks the signup)
+    if (!isContactForm) {
+      await saveSignup({ name, email, whatsapp: formattedWhatsapp });
+    }
+
     // increment live waitlist
-    // increment live waitlist
+
     if (!isContactForm) {
       try {
         await redis.set("waitlist_count", 500, { nx: true });

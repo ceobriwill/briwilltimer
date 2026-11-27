@@ -1,6 +1,6 @@
 import { Redis } from "@upstash/redis";
 import { Ratelimit } from "@upstash/ratelimit";
-import { saveSignup } from "../lib/signups.js";
+import { saveSignup, findReferrer, cleanInviteCode } from "../lib/signups.js";
 
 const redis = Redis.fromEnv();
 
@@ -100,6 +100,51 @@ export default async function handler(req, res) {
         status: "error",
         message:
           "Please enter a valid Nigerian WhatsApp number, e.g. 08012345678.",
+      });
+    }
+  }
+
+  // Optional invite code (waitlist signups only)
+  const inviteCode = cleanInviteCode(req.body?.ref);
+  let referrerId = null;
+  if (!isContactForm && inviteCode) {
+    const badKey = `rl:badcode:${getClientIp(req)}`;
+
+    // Stop people who keep guessing wrong codes (10 wrong codes per hour)
+    try {
+      const wrongSoFar = Number(await redis.get(badKey)) || 0;
+      if (wrongSoFar >= 10) {
+        return res.status(429).json({
+          status: "error",
+          message: "Too many wrong invite codes. Please try again later.",
+        });
+      }
+    } catch (err) {
+      console.error("Invite code limiter error:", err);
+    }
+
+    try {
+      referrerId = await findReferrer(inviteCode);
+    } catch (err) {
+      console.error("Invite code lookup failed:", err);
+      return res.status(503).json({
+        status: "error",
+        message:
+          "We can't check invite codes right now. Please try again shortly.",
+      });
+    }
+
+    if (!referrerId) {
+      try {
+        const wrong = await redis.incr(badKey);
+        if (wrong === 1) await redis.expire(badKey, 3600);
+      } catch (err) {
+        console.error("Invite code limiter error:", err);
+      }
+      return res.status(400).json({
+        status: "error",
+        message:
+          "That invite code doesn't exist. Check it and try again, or leave it blank.",
       });
     }
   }
@@ -561,7 +606,12 @@ export default async function handler(req, res) {
 
     // Save a copy of the signup in our own database (never blocks the signup)
     if (!isContactForm) {
-      await saveSignup({ name, email, whatsapp: formattedWhatsapp });
+      await saveSignup({
+        name,
+        email,
+        whatsapp: formattedWhatsapp,
+        referrerId,
+      });
     }
 
     // increment live waitlist

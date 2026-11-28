@@ -39,7 +39,8 @@ export default async function handler(req, res) {
         status: "success",
         channel: result.channel,
         already: Boolean(result.already),
-        bothConfirmed: Boolean(result.bothConfirmed),
+        emailConfirmed: Boolean(result.emailConfirmed),
+        whatsappConfirmed: Boolean(result.whatsappConfirmed),
       });
     }
     if (result.reason === "expired") {

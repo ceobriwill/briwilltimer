@@ -163,7 +163,7 @@
                 Join Briwill before launch and earn ₦100 for every approved
                 friend you refer.
               </p>
-            
+
               <p>
                 Be the first to experience the future of online shopping in
                 Nigeria.
@@ -646,7 +646,9 @@
           if (result.status === "success") {
             // ✅ Show simple confirmation for the site
             homeMessage.style.color = "green";
-            homeMessage.textContent = `✅ Congratulations ${data.name || "there"}, you’ve joined the Briwill waitlist! 🎊`;
+            homeMessage.textContent = result.needsConfirmation
+              ? `✅ Thanks ${data.name || "there"}! Please check your email and confirm, so your friend gets credit.`
+              : `✅ Congratulations ${data.name || "Dear"}, you’ve joined the Briwill waitlist! 🎊`;
             homeMessage.style.display = "block";
             homeForm.reset();
 

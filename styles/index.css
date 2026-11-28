@@ -1,8 +1,21 @@
-/* --- 1. Reset & Global Styles --- */
+/* =========================================================
+   Briwill homepage styles
+   1 Base · 2 Typography · 3 Header · 4 Hero & countdown
+   5 Waitlist form · 6 Live counter · 7 Features · 8 Footer
+   9 Breakpoints
+   ========================================================= */
+
+/* --- 1. Base --- */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: 90px;
 }
 
 body {
@@ -15,47 +28,30 @@ body {
   min-height: 100vh;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  height: 80px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: rgb(245, 245, 245, 0.95); /* Updated Background Color */
+img,
+svg {
+  max-width: 100%;
 }
 
-header h1 {
-  font-size: 20px;
-  font-weight: 700;
-  color: #0a3d62; /* Updated Color */
-  padding-left: 20px;
-  padding-top: 10px;
-  font-family: "poppins", sans-serif;
-}
-header nav a {
-  margin-right: 20px;
-  font-size: 14px;
-  color: #64748b;
-  transition: color 0.2s;
-  font-weight: 600;
+/* Form controls use the page font instead of the browser default */
+input,
+button,
+textarea {
+  font-family: inherit;
 }
 
-/* Responsive Container */
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 clamp(16px, 4vw, 24px);
 }
 
 /* --- 2. Typography --- */
 h1 {
   font-size: 32px;
   font-weight: 700;
-  color: #0a3d62; /* Updated Color */
+  color: #0a3d62;
   margin-bottom: 16px;
 }
 
@@ -76,7 +72,7 @@ h3 {
 h4 {
   font-size: 18px;
   font-weight: 700;
-  color: #0a3d62; /* Updated Color */
+  color: #0a3d62;
   margin-bottom: 16px;
   text-transform: uppercase;
 }
@@ -93,42 +89,78 @@ a {
   transition: color 0.2s;
 }
 
-.launch-date {
+/* --- 3. Header --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
-  margin-top: 30px;
-  font-size: 14px;
-  font-weight: 500;
-}
-.launch a:hover {
-  color: #f59e0b;
+  gap: 12px;
+  height: clamp(60px, 9vw, 80px);
+  padding: 0 clamp(14px, 4vw, 28px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(245, 245, 245, 0.95);
 }
 
-/* --- 3. Hero & Countdown Section --- */
+header h1 {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(18px, 4.6vw, 22px);
+  font-weight: 700;
+  color: #0a3d62;
+  white-space: nowrap;
+}
+
+header nav {
+  display: flex;
+  gap: clamp(14px, 4vw, 28px);
+}
+
+header nav a {
+  font-size: clamp(13px, 3.4vw, 15px);
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+/* --- 4. Hero & countdown --- */
 .hero-section {
-  padding: 80px 0 60px 0;
+  padding: clamp(28px, 6vw, 80px) 0 clamp(32px, 5vw, 60px);
   text-align: center;
   background-color: #fff;
 }
 
-.hero-subtext {
-  max-width: 600px;
-  margin: 0 auto 40px auto;
-  font-size: 18px;
+.hero-section h1 {
+  font-size: clamp(26px, 8.6vw, 48px);
+  line-height: 1.15;
+  margin-bottom: clamp(10px, 2.5vw, 16px);
+  text-wrap: balance;
 }
 
+.hero-subtext {
+  max-width: 600px;
+  margin: 0 auto clamp(22px, 5vw, 40px);
+  font-size: clamp(15px, 3.8vw, 20px);
+  text-wrap: balance;
+}
+
+/* Always four boxes in one row, on any screen */
 .countdown-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 90px));
   justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
+  gap: clamp(6px, 2vw, 15px);
 }
 
 .timer-box {
+  min-width: 0;
+  aspect-ratio: 9 / 10;
   background: #fff;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  width: 90px;
-  height: 100px;
+  border-radius: clamp(8px, 2vw, 12px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,34 +169,270 @@ a {
 }
 
 .timer-number {
-  font-size: 32px;
+  font-size: clamp(20px, 6.4vw, 32px);
   font-weight: 700;
-  color: #0a3d62; /* Updated Color */
+  line-height: 1.1;
+  color: #0a3d62;
 }
 
 .timer-label {
-  font-size: 11px;
+  margin-top: 4px;
+  font-size: clamp(8px, 2.3vw, 11px);
   font-weight: 600;
   color: #64748b;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-top: 4px;
+  letter-spacing: 0.3px;
 }
-/* £££££££££££££££££££££££££££££££££££££££££££££££££££££ */
-/* --- Live Waitlist Counter --- */
+
+.launch-date {
+  text-align: center;
+  margin-top: clamp(16px, 4vw, 30px);
+  font-size: clamp(12px, 3.2vw, 14px);
+  font-weight: 500;
+}
+
+/* --- 5. Waitlist form --- */
+.form-section {
+  padding: clamp(28px, 6vw, 60px) 0;
+  background-color: #f9fafb;
+}
+
+.form-wrapper {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(20px, 5.5vw, 48px);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Heading lines */
+.form-head h2 {
+  font-size: clamp(22px, 6.4vw, 28px);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.form-head p {
+  margin: 0 0 8px;
+  font-size: clamp(13.5px, 3.6vw, 12px);
+  line-height: 1.5;
+  color: #64748b;
+  text-wrap: balance;
+}
+
+.form-head .earn-line {
+  margin: 10px 0 4px;
+  font-weight: 700;
+  color: #a16207;
+}
+
+/* Fields */
+.form-group {
+  margin-bottom: clamp(18px, 4vw, 24px);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: clamp(13.5px, 3.6vw, 14.5px);
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.form-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 14px 16px;
+  font-size: 16px; /* keep at 16px so iPhones don't zoom on tap */
+  color: #334155;
+  background: #fcfcfd;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.form-input:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+.form-input.input-error {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.btn-submit {
+  width: 100%;
+  min-height: 52px;
+  padding: 16px;
+  font-size: clamp(15px, 4vw, 16px);
+  font-weight: 700;
+  color: #1e293b;
+  background-color: #f59e0b;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.3);
+  transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+  background-color: #d97706;
+}
+
+.spam-text {
+  margin-top: 20px;
+  text-align: center;
+  font-size: clamp(12.5px, 3.4vw, 14px);
+  color: #94a3b8;
+}
+
+/* Invite code */
+.invite-toggle-row {
+  margin: -4px 0 20px;
+}
+
+.invite-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #a16207;
+  text-decoration: underline;
+}
+
+.optional-tag {
+  margin-left: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #94a3b8;
+}
+
+.invited-pill {
+  display: inline-block;
+  margin: 0 0 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.field-error {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #b91c1c;
+}
+
+/* Terms box */
+.terms-row {
+  margin: 0 0 24px;
+  padding: 14px 16px;
+  background: #fff7ed;
+  border-radius: 10px;
+}
+
+.terms-label {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #334155;
+  cursor: pointer;
+}
+
+.terms-label input {
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+  accent-color: #f59e0b;
+  flex-shrink: 0;
+}
+
+.terms-label a {
+  color: #a16207;
+  font-weight: 600;
+}
+
+.terms-note {
+  margin: 8px 0 0 28px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* Sign-up limit banner */
+.limit-banner {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin: 0 0 24px;
+  padding: 14px 16px;
+  background: #fef3c7;
+  border-radius: 10px;
+  color: #92400e;
+  font-size: clamp(13px, 3.5vw, 14px);
+  line-height: 1.4;
+}
+
+.limit-banner svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.limit-banner strong {
+  display: block;
+}
+
+/* Hidden state for the pieces above */
+.invite-section[hidden],
+.invite-toggle-row[hidden],
+.invited-pill[hidden],
+.field-error[hidden],
+.terms-row[hidden],
+.limit-banner[hidden] {
+  display: none;
+}
+
+/* Corner message box (success is green, errors are red) */
+#homeMessage {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  max-width: 300px;
+  padding: 15px;
+  background: #e0ffe0;
+  border: 1px solid green;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+  z-index: 9999;
+}
+
+#homeMessage[style*="color: red"] {
+  background: #fef2f2;
+  border-color: #fca5a5;
+}
+
+/* --- 6. Live waitlist counter --- */
 #liveCounter {
   display: none;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 24px;
-  padding: 10px 20px;
+  gap: 4px 10px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 24px auto 0;
+  padding: 10px clamp(14px, 4vw, 20px);
+  text-align: center;
   background: #fff7ed;
   border: 1px solid #fde5c4;
   border-radius: 999px;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .counter-pulse {
@@ -200,162 +468,83 @@ a {
 }
 
 #counterNumber {
+  font-size: clamp(14px, 3.8vw, 15px);
   font-weight: 700;
   color: #0a3d62;
-  font-size: 15px;
 }
 
 .counter-label {
-  font-size: 14px;
+  font-size: clamp(12px, 3.3vw, 14px);
   color: #64748b;
-  font-family: "Inter", sans-serif;
 }
 
-@media (max-width: 600px) {
-  #liveCounter {
-    padding: 8px 14px;
-  }
-  .counter-label {
-    font-size: 12px;
-  }
-}
-
-/* --- 4. Form Section --- */
-.form-section {
-  padding: 60px 0;
-  background-color: #f9fafb;
-}
-
-.form-wrapper {
-  max-width: 500px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-.form-group {
-  margin-bottom: 24px;
-}
-
-.form-label {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  color: #1e293b;
-  margin-bottom: 8px;
-}
-
-.form-input {
-  width: 100%;
-  padding: 14px 16px;
-  font-size: 16px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  outline: none;
-  color: #334155;
-  transition: all 0.2s;
-}
-
-.form-input:focus {
-  border-color: #f59e0b;
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
-}
-
-.btn-submit {
-  width: 100%;
-  background-color: #f59e0b;
-  color: white;
-  font-size: 16px;
-  font-weight: 700;
-  padding: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.3);
-  transition: background-color 0.2s;
-}
-
-.btn-submit:hover {
-  background-color: #d97706;
-}
-
-.spam-text {
-  font-size: 14px;
-  color: #94a3b8;
-  margin-top: 20px;
-  text-align: center;
-}
-
-#homeMessage {
-  position: fixed;
-  top: 20px; /* distance from top */
-  right: 20px; /* distance from right */
-  max-width: 300px;
-  padding: 15px;
-  background: #e0ffe0; /* light green for success */
-  border: 1px solid green;
-  border-radius: 8px;
-  z-index: 9999; /* make sure it's on top of everything */
-}
-/* --- 5. Features Section --- */
+/* --- 7. Features --- */
 .features-section {
-  padding: 80px 0;
+  padding: clamp(44px, 9vw, 80px) 0;
   background-color: #fff;
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr); /* Mobile default: 1 column */
-  gap: 40px;
+  grid-template-columns: 1fr;
+  gap: clamp(20px, 5vw, 40px);
   text-align: center;
 }
 
 .feature-item {
-  padding: 20px;
+  padding: clamp(12px, 3vw, 20px);
+}
+
+.feature-item h3 {
+  font-size: clamp(18px, 4.6vw, 20px);
+}
+
+.feature-item p {
+  font-size: clamp(14px, 3.7vw, 16px);
 }
 
 .icon-box {
   margin-bottom: 16px;
-  color: #0a3d62; /* Updated Color */
+  color: #0a3d62;
 }
 
-/* SVG Stroke Color Update Class */
 .svg-icon {
-  stroke: #0a3d62; /* Updated Color */
-}
-.svg-fill {
-  fill: #0a3d62; /* Updated Color */
+  stroke: #0a3d62;
 }
 
-/* --- 6. Footer --- */
+.svg-fill {
+  fill: #0a3d62;
+}
+
+/* --- 8. Footer --- */
 footer {
-  background-color: #fff;
-  padding: 60px 0 40px 0;
-  border-top: 1px solid #f1f5f9;
   margin-top: auto;
+  padding: clamp(36px, 7vw, 60px) 0 clamp(28px, 5vw, 40px);
+  background-color: #fff;
+  border-top: 1px solid #f1f5f9;
+}
+
+footer h4 {
+  font-size: clamp(16px, 4.2vw, 18px);
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1fr; /* Mobile default */
-  gap: 40px;
-  margin-bottom: 40px;
+  grid-template-columns: 1fr;
+  gap: clamp(28px, 6vw, 40px);
+  margin-bottom: clamp(28px, 6vw, 40px);
 }
 
-.socials {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  justify-content: flex-start;
+.footer-grid p,
+.footer-links a {
+  font-size: clamp(14px, 3.7vw, 16px);
 }
 
 .footer-label {
-  font-size: 13px;
+  margin-bottom: 16px;
+  font-size: clamp(12px, 3.2vw, 13px);
   font-weight: 700;
   color: #1e293b;
-  margin-bottom: 16px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
@@ -366,68 +555,73 @@ footer {
   gap: 12px;
 }
 
+.socials {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
 .copyright {
-  text-align: center;
-  font-size: 14px;
-  color: #94a3b8;
   padding-top: 30px;
+  text-align: center;
+  font-size: clamp(12px, 3.3vw, 14px);
+  color: #94a3b8;
   border-top: 1px solid #f1f5f9;
 }
 
-/* --- 7. Media Queries (Responsiveness) --- */
+/* --- 9. Breakpoints --- */
 
-/* Tablet & Up (min-width: 768px) */
-@media (min-width: 768px) {
-  h1 {
-    font-size: 48px;
-  }
-  .hero-subtext {
-    font-size: 20px;
-  }
-
+/* Phones and small tablets */
+@media (max-width: 767px) {
   .features-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for features */
+    max-width: 420px;
+    margin: 0 auto;
   }
+}
 
+@media (min-width: 600px) and (max-width: 767px) {
   .footer-grid {
-    grid-template-columns: 2fr 1fr 1fr; /* Logo/Desc takes more space, then links */
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-grid > div:first-child {
+    grid-column: 1 / -1;
   }
 }
 
 @media (max-width: 600px) {
-  header {
-    height: 60px;
-  }
-  .hero-section {
-    padding: 24px 0 30px 0; /* was 50px 0 — cut the vertical padding */
-  }
-  .hero-subtext {
-    font-size: 15px;
-    margin-bottom: 20px; /* was 40px — tighter gap before countdown */
-  }
-  .countdown-container {
-    gap: 8px; /* was 15px — tighter boxes */
-  }
-  .timer-box {
-    width: 65px; /* slightly smaller */
-    height: 70px;
-  }
-  .timer-number {
-    font-size: 22px;
-  }
-  .timer-label {
-    font-size: 9px;
-  }
-  .launch-date {
-    margin-top: 16px; /* was 30px */
-    font-size: 12px;
-  }
-  .form-section {
-    padding: 30px 0; /* was 60px — pulls form section up */
-  }
   .form-wrapper {
-    padding: 24px;
     box-shadow: none;
     border: 1px solid #e2e8f0;
+  }
+}
+
+@media (max-width: 480px) {
+  #homeMessage {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    max-width: none;
+    font-size: 14px;
+  }
+  #liveCounter {
+    border-radius: 20px;
+  }
+  .terms-row,
+  .limit-banner {
+    padding: 12px 14px;
+  }
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 48px;
+  }
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
   }
 }

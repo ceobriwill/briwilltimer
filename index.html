@@ -153,17 +153,8 @@
       <section class="form-section">
         <div class="container">
           <div class="form-wrapper">
-            <div
-              class="form-head"
-              style="text-align: center; margin-bottom: 30px"
-            >
+            <div style="text-align: center; margin-bottom: 30px">
               <h2>Get Notified at Launch</h2>
-              <p class="earn-line">Earn while you wait.</p>
-              <p class="earn-text">
-                Join Briwill before launch and earn ₦100 for every approved
-                friend you refer.
-              </p>
-            
               <p>
                 Be the first to experience the future of online shopping in
                 Nigeria.
@@ -171,32 +162,6 @@
             </div>
 
             <form id="homeForm">
-              <div id="limitBanner" class="limit-banner" role="alert" hidden>
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
-                  />
-                  <line x1="12" y1="9" x2="12" y2="13" />
-                  <line x1="12" y1="17" x2="12.01" y2="17" />
-                </svg>
-                <div>
-                  <strong id="limitTitle"
-                    >You’ve reached today’s signup limit.</strong
-                  >
-                  <span id="limitText">Try again tomorrow.</span>
-                </div>
-              </div>
-
               <div class="form-group">
                 <label class="form-label">Full Name</label>
                 <input
@@ -232,54 +197,6 @@
                 />
               </div>
 
-              <div class="invite-toggle-row">
-                <button type="button" id="inviteToggle" class="invite-toggle">
-                  Have an invite code?
-                </button>
-              </div>
-
-              <div id="inviteSection" class="invite-section" hidden>
-                <div class="form-group">
-                  <label class="form-label" for="inviteCode"
-                    >Invite code
-                    <span class="optional-tag">Optional</span></label
-                  >
-                  <p id="invitedNote" class="invited-pill" hidden>
-                    Invited by a friend
-                  </p>
-                  <input
-                    id="inviteCode"
-                    name="ref"
-                    type="text"
-                    class="form-input"
-                    placeholder="Enter invite code"
-                    maxlength="12"
-                    autocomplete="off"
-                    autocapitalize="characters"
-                  />
-                  <p id="inviteError" class="field-error" hidden></p>
-                </div>
-
-                <div id="termsRow" class="terms-row" hidden>
-                  <label class="terms-label">
-                    <input id="acceptedTerms" type="checkbox" />
-                    <span
-                      >I agree to the
-                      <a href="/referral-terms" target="_blank" rel="noopener"
-                        >Referral Terms</a
-                      ></span
-                    >
-                  </label>
-                  <p class="terms-note">
-                    Your friend gets credit once you confirm your email and
-                    WhatsApp.
-                  </p>
-                  <p id="termsError" class="field-error" hidden>
-                    Please tick the box to use an invite code.
-                  </p>
-                </div>
-              </div>
-
               <button type="submit" class="btn-submit">Notify Me</button>
               <div id="homeMessage" style="display: none"></div>
             </form>
@@ -287,7 +204,7 @@
             <p class="spam-text">We'll notify you when we launch. No spam.</p>
             <div id="liveCounter" style="display: none">
               <span class="counter-pulse"></span>
-              <span id="counterNumber"></span>
+              <span id="counterNumber">500</span>
               <span class="counter-label"
                 >people already joined the waitlist</span
               >
@@ -548,91 +465,15 @@
 
       const homeForm = document.getElementById("homeForm");
       const homeMessage = document.getElementById("homeMessage");
-      // Invite code: the field, ?ref= links, and the terms checkbox
-      const inviteToggle = document.getElementById("inviteToggle");
-      const inviteSection = document.getElementById("inviteSection");
-      const inviteInput = document.getElementById("inviteCode");
-      const invitedNote = document.getElementById("invitedNote");
-      const termsRow = document.getElementById("termsRow");
-      const termsCheckbox = document.getElementById("acceptedTerms");
 
-      function updateTermsRow() {
-        const hasCode = inviteInput.value.trim() !== "";
-        termsRow.hidden = !hasCode;
-        if (!hasCode) termsCheckbox.checked = false;
-      }
-
-      inviteToggle.addEventListener("click", () => {
-        inviteSection.hidden = false;
-        inviteToggle.parentElement.hidden = true;
-        inviteInput.focus();
-      });
-      inviteInput.addEventListener("input", updateTermsRow);
-
-      // Opened from a friend's link like briwill.co/?ref=K7P2X9QM
-      const refFromLink = new URLSearchParams(window.location.search).get(
-        "ref",
-      );
-      if (refFromLink) {
-        inviteInput.value = refFromLink.trim().toUpperCase().slice(0, 12);
-        inviteSection.hidden = false;
-        inviteToggle.parentElement.hidden = true;
-        invitedNote.hidden = false;
-        updateTermsRow();
-      }
-      // Error states
-      const limitBanner = document.getElementById("limitBanner");
-      const limitTitle = document.getElementById("limitTitle");
-      const limitText = document.getElementById("limitText");
-      const inviteError = document.getElementById("inviteError");
-      const termsError = document.getElementById("termsError");
-
-      function clearFormErrors() {
-        limitBanner.hidden = true;
-        inviteError.hidden = true;
-        inviteInput.classList.remove("input-error");
-        termsError.hidden = true;
-      }
-
-      function showLimit(title, text) {
-        limitTitle.textContent = title;
-        limitText.textContent = text;
-        limitBanner.hidden = false;
-        limitBanner.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-
-      function showInviteError(text) {
-        inviteSection.hidden = false;
-        inviteToggle.parentElement.hidden = true;
-        inviteError.textContent = text;
-        inviteError.hidden = false;
-        inviteInput.classList.add("input-error");
-        inviteInput.focus();
-      }
-
-      inviteInput.addEventListener("input", () => {
-        inviteError.hidden = true;
-        inviteInput.classList.remove("input-error");
-      });
-      termsCheckbox.addEventListener("change", () => {
-        termsError.hidden = true;
-      });
       homeForm.addEventListener("submit", async (e) => {
         e.preventDefault();
-
-        const data = Object.fromEntries(new FormData(homeForm));
-        data.acceptedTerms = termsCheckbox.checked;
-
-        clearFormErrors();
-
-        if (data.ref && data.ref.trim() && !termsCheckbox.checked) {
-          termsError.hidden = false;
-          return;
-        }
 
         const btn = homeForm.querySelector("button[type='submit']");
         btn.disabled = true;
         btn.textContent = "Sending...";
+
+        const data = Object.fromEntries(new FormData(homeForm));
 
         try {
           const res = await fetch("/api/notify", {
@@ -653,22 +494,6 @@
             setTimeout(() => {
               homeMessage.style.display = "none";
             }, 5000);
-          } else if (res.status === 429) {
-            if ((result.message || "").includes("wrong invite codes")) {
-              showLimit(
-                "Too many wrong invite codes.",
-                "Try again in an hour, or leave the code blank.",
-              );
-            } else {
-              showLimit(
-                "You’ve reached today’s signup limit.",
-                "Try again tomorrow.",
-              );
-            }
-          } else if ((result.message || "").includes("invite code doesn")) {
-            showInviteError(
-              "That invite code doesn’t exist. Check it, or leave it blank.",
-            );
           } else {
             homeMessage.style.color = "red";
             homeMessage.textContent =

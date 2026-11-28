@@ -1,6 +1,11 @@
 import { Redis } from "@upstash/redis";
 import { Ratelimit } from "@upstash/ratelimit";
-import { saveSignup, findReferrer, cleanInviteCode } from "../lib/signups.js";
+import {
+  saveSignup,
+  findReferrer,
+  cleanInviteCode,
+  createConfirmationToken,
+} from "../lib/signups.js";
 
 const redis = Redis.fromEnv();
 
@@ -239,6 +244,64 @@ export default async function handler(req, res) {
         status: "error",
         message: userMessage,
       });
+    }
+
+    // Save to our own database. Referred signups also get an email
+    // confirmation link (never blocks the signup if something fails).
+    if (!isContactForm) {
+      const saved = await saveSignup({
+        name,
+        email,
+        whatsapp: formattedWhatsapp,
+        referrerId,
+      });
+      if (saved && referrerId) {
+        const token = await createConfirmationToken(saved.id, "email");
+        if (token) {
+          const siteUrl =
+            process.env.VERCEL_ENV === "production"
+              ? "https://briwill.co"
+              : `https://${process.env.VERCEL_URL}`;
+          const link = `${siteUrl}/confirm?t=${token}`;
+          try {
+            const confirmEmail = await fetch(
+              "https://api.sendinblue.com/v3/smtp/email",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  "api-key": process.env.SENDINBLUE_API_KEY,
+                },
+                body: JSON.stringify({
+                  sender: { name: "Briwill", email: "hello@briwill.co" },
+                  to: [{ email, name }],
+                  subject: "Confirm your email for Briwill",
+                  htmlContent: `
+<div style="background:#EEF1F6;padding:32px 12px;font-family:Arial,Helvetica,sans-serif;">
+  <div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:16px;overflow:hidden;">
+    <div style="background:#12306B;padding:32px 36px;">
+      <p style="margin:0 0 8px 0;font-size:15px;color:#F7B089;">Hi ${safeName},</p>
+      <h1 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:34px;color:#ffffff;">Confirm your email</h1>
+    </div>
+    <div style="padding:28px 36px 32px 36px;">
+      <p style="margin:0 0 20px 0;font-size:16px;line-height:26px;color:#1F2937;">You joined the Briwill waitlist with a friend’s invite code. Please confirm your email address so your signup counts. The link works for 7 days.</p>
+      <a href="${link}" style="display:inline-block;background:#E8641B;color:#ffffff;font-size:16px;font-weight:700;line-height:50px;height:50px;padding:0 32px;border-radius:8px;text-decoration:none;">Confirm my email</a>
+      <p style="margin:24px 0 0 0;font-size:13px;line-height:20px;color:#6B7280;">If you didn’t sign up for Briwill, you can ignore this email.</p>
+    </div>
+  </div>
+  <p style="text-align:center;margin:16px 0 0 0;font-size:12px;color:#9CA3AF;">Briwill Limited · RC 8937142</p>
+</div>`,
+                }),
+              },
+            );
+            if (!confirmEmail.ok) {
+              console.error("Confirm email error:", await confirmEmail.text());
+            }
+          } catch (err) {
+            console.error("Confirm email exception:", err);
+          }
+        }
+      }
     }
 
     // 2️⃣ Build auto-reply email
@@ -608,16 +671,6 @@ export default async function handler(req, res) {
         console.error("WhatsApp send exception:", err);
         // Don't fail the whole request — email already succeeded
       }
-    }
-
-    // Save a copy of the signup in our own database (never blocks the signup)
-    if (!isContactForm) {
-      await saveSignup({
-        name,
-        email,
-        whatsapp: formattedWhatsapp,
-        referrerId,
-      });
     }
 
     // increment live waitlist

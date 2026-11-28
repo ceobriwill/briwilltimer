@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Confirm – Briwill</title>
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700&display=swap"
+    />
+  </head>
+  <body>
+    <header>
+      <h1 class="briwilllogo">Briwill</h1>
+      <nav><a href="/">Home</a></nav>
+    </header>
+
+    <main>
+      <section class="form-section">
+        <div class="container">
+          <div class="form-wrapper" style="text-align: center">
+            <h2 id="title">Confirm your details</h2>
+            <p id="text" style="margin-bottom: 24px">
+              Tap the button below to confirm.
+            </p>
+            <button type="button" id="confirmBtn" class="btn-submit">
+              Confirm
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const token = new URLSearchParams(window.location.search).get("t") || "";
+      const title = document.getElementById("title");
+      const text = document.getElementById("text");
+      const btn = document.getElementById("confirmBtn");
+
+      if (!token) {
+        title.textContent = "This link isn’t valid";
+        text.textContent =
+          "Open the link from your email or WhatsApp message again.";
+        btn.style.display = "none";
+      }
+
+      btn.addEventListener("click", async () => {
+        btn.disabled = true;
+        btn.textContent = "Confirming...";
+        try {
+          const res = await fetch("/api/confirm", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ token }),
+          });
+          const result = await res.json();
+
+          if (result.status === "success") {
+            const what = result.channel === "email" ? "Email" : "WhatsApp";
+            const other = result.channel === "email" ? "WhatsApp" : "email";
+            title.textContent = result.already
+              ? `${what} already confirmed`
+              : `${what} confirmed ✓`;
+            text.textContent = result.bothConfirmed
+              ? "Both are confirmed. Thank you!"
+              : `One more step: please confirm your ${other} too.`;
+            btn.style.display = "none";
+          } else {
+            title.textContent = result.message || "Something went wrong";
+            text.textContent =
+              res.status === 410
+                ? "Email hello@briwill.co and we’ll help you."
+                : "Please try again.";
+            if (res.status !== 503 && res.status !== 429) {
+              btn.style.display = "none";
+            } else {
+              btn.disabled = false;
+              btn.textContent = "Try again";
+            }
+          }
+        } catch (err) {
+          title.textContent = "Something went wrong";
+          text.textContent = "Check your connection and try again.";
+          btn.disabled = false;
+          btn.textContent = "Try again";
+        }
+      });
+    </script>
+  </body>
+</html>

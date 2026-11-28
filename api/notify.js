@@ -108,6 +108,12 @@ export default async function handler(req, res) {
   const inviteCode = cleanInviteCode(req.body?.ref);
   let referrerId = null;
   if (!isContactForm && inviteCode) {
+    if (req.body?.acceptedTerms !== true) {
+      return res.status(400).json({
+        status: "error",
+        message: "Please agree to the Referral Terms to use an invite code.",
+      });
+    }
     const badKey = `rl:badcode:${getClientIp(req)}`;
 
     // Stop people who keep guessing wrong codes (10 wrong codes per hour)

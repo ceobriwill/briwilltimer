@@ -12,6 +12,114 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700&display=swap"
     />
+    <style>
+      .confirm-card {
+        text-align: center;
+      }
+      #start[hidden],
+      #status[hidden] {
+        display: none;
+      }
+      .status-banner {
+        margin: 0 0 20px;
+        padding: 12px 14px;
+        background: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        border-radius: 10px;
+        color: #065f46;
+        font-size: 13.5px;
+        line-height: 1.4;
+      }
+      .status-eyebrow {
+        margin: 0 0 6px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        color: #a16207;
+      }
+      .status-sub {
+        margin: 0 0 22px;
+        font-size: 14px;
+      }
+      .status-card {
+        margin: 0 0 12px;
+        padding: 14px 16px;
+        text-align: left;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+      }
+      .status-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .status-icon {
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        background: #f1f5f9;
+        color: #475569;
+      }
+      .status-icon.is-done {
+        background: #dcfce7;
+        color: #166534;
+      }
+      .status-icon svg {
+        width: 18px;
+        height: 18px;
+      }
+      .status-name {
+        flex: 1;
+        min-width: 0;
+      }
+      .status-name strong {
+        display: block;
+        font-size: 15px;
+        color: #1e293b;
+      }
+      .status-name small {
+        font-size: 13px;
+        color: #64748b;
+      }
+      .chip {
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .chip-done {
+        background: #dcfce7;
+        color: #166534;
+      }
+      .chip-pending {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .btn-outline {
+        display: block;
+        margin-top: 12px;
+        padding: 12px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 600;
+        color: #1e293b;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+      }
+      .btn-outline:hover {
+        border-color: #f59e0b;
+        color: #1e293b;
+      }
+      .status-hint {
+        margin: 10px 0 0;
+        font-size: 13px;
+        color: #64748b;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -22,24 +130,75 @@
     <main>
       <section class="form-section">
         <div class="container">
-          <div class="form-wrapper" style="text-align: center">
-            <h2 id="title">Confirm your details</h2>
-            <p id="text" style="margin-bottom: 24px">
-              Tap the button below to confirm.
-            </p>
-            <button type="button" id="confirmBtn" class="btn-submit">
-              Confirm
-            </button>
+          <div class="form-wrapper confirm-card">
+            <div id="start">
+              <h2 id="title">Confirm your details</h2>
+              <p id="text" style="margin-bottom: 24px">
+                Tap the button below to confirm.
+              </p>
+              <button type="button" id="confirmBtn" class="btn-submit">
+                Confirm
+              </button>
+            </div>
+            <div id="status" hidden></div>
           </div>
         </div>
       </section>
     </main>
 
     <script>
+      // Your WhatsApp Business number in international format, digits only
+      // (for example 2348012345678). The "Open WhatsApp" button uses it.
+      const WHATSAPP_URL = "https://wa.me/2347077855269";
+
       const token = new URLSearchParams(window.location.search).get("t") || "";
+      const start = document.getElementById("start");
+      const statusBox = document.getElementById("status");
       const title = document.getElementById("title");
       const text = document.getElementById("text");
       const btn = document.getElementById("confirmBtn");
+
+      const ICON_ATTRS =
+        'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
+      const ICONS = {
+        check: `<svg ${ICON_ATTRS}><polyline points="20 6 9 17 4 12"/></svg>`,
+        mail: `<svg ${ICON_ATTRS}><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+        phone: `<svg ${ICON_ATTRS}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
+      };
+
+      function card(label, done, pendingIcon, extra) {
+        return `
+          <div class="status-card">
+            <div class="status-row">
+              <span class="status-icon ${done ? "is-done" : ""}">${done ? ICONS.check : pendingIcon}</span>
+              <span class="status-name">
+                <strong>${label}</strong>
+                <small>${done ? "Confirmed" : "Pending confirmation"}</small>
+              </span>
+              <span class="chip ${done ? "chip-done" : "chip-pending"}">${done ? "Confirmed" : "Pending"}</span>
+            </div>
+            ${done ? "" : extra}
+          </div>`;
+      }
+
+      function showStatus({ emailConfirmed, whatsappConfirmed }) {
+        const both = emailConfirmed && whatsappConfirmed;
+        const whatsappExtra = `<a class="btn-outline" href="${WHATSAPP_URL}" target="_blank" rel="noopener">Open WhatsApp →</a>`;
+        const emailExtra = `<p class="status-hint">Check your inbox for the confirmation link.</p>`;
+        statusBox.innerHTML = `
+          <p class="status-banner">${
+            both
+              ? "Both confirmed. Thank you!"
+              : "Invited by a friend. Confirm your email and WhatsApp so your friend gets credit."
+          }</p>
+          <p class="status-eyebrow">${both ? "ALL DONE" : "TWO QUICK CHECKS"}</p>
+          <h2>${both ? "You’re all set ✓" : "Confirm both channels"}</h2>
+          <p class="status-sub">Each channel has its own secure confirmation link.</p>
+          ${card("Email", emailConfirmed, ICONS.mail, emailExtra)}
+          ${card("WhatsApp", whatsappConfirmed, ICONS.phone, whatsappExtra)}`;
+        start.hidden = true;
+        statusBox.hidden = false;
+      }
 
       if (!token) {
         title.textContent = "This link isn’t valid";
@@ -60,15 +219,7 @@
           const result = await res.json();
 
           if (result.status === "success") {
-            const what = result.channel === "email" ? "Email" : "WhatsApp";
-            const other = result.channel === "email" ? "WhatsApp" : "email";
-            title.textContent = result.already
-              ? `${what} already confirmed`
-              : `${what} confirmed ✓`;
-            text.textContent = result.bothConfirmed
-              ? "Both are confirmed. Thank you!"
-              : `One more step: please confirm your ${other} too.`;
-            btn.style.display = "none";
+            showStatus(result);
           } else {
             title.textContent = result.message || "Something went wrong";
             text.textContent =
